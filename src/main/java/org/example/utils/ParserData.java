@@ -11,19 +11,22 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class ParserData {
 
     public PaymentRegistry ReadRegistry(String path, PaymentRegistry paymentRegistry) throws IOException {
-        List<String> readFileContents;
+        List<String> readFileContents = getStringFromFile(path);
 
-        try {
-            readFileContents = Files.readAllLines(Path.of(path), Charset.forName("windows-1251"));
-        } catch (IOException e) {
-            System.err.println("File not found!");
-            throw new RuntimeException(e);
-        }
+        paymentRegistry.setContractName(readFileContents.get(1).replaceAll(";", ""));
+
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String start = readFileContents.get(3).split(";")[3];
+        String end = readFileContents.get(3).split(";")[4];
+        paymentRegistry.setStartDate(LocalDateTime.parse(readFileContents.get(3).split(";")[3]));
+        paymentRegistry.setEndDate(LocalDateTime.parse(readFileContents.get(3).split(";")[4]));
+
 
         for(int i = 1; i < readFileContents.size(); i++){
             String[] elementArray = readFileContents.get(i).split(";");
@@ -48,33 +51,12 @@ public class ParserData {
         return paymentRegistry;
     }
 
-//    File xlsxFile = new File("path/to/file.xlsx");
-//    File csvFile = new File("path/to/file.csv");
-//    XlsxToCsvConverter.convertToCsv(xlsxFile, csvFile);
-//
-//    public static void convertToCsv(File xlsxFile, File csvFile) throws IOException {
-//        try (XSSFWorkbook workbook = new XSSFWorkbook(xlsxFile)) {
-//            // Получаем первый лист в книге
-//            Row row;
-//            Cell cell;
-//            try (FileOutputStream csvStream = new FileOutputStream(csvFile)) {
-//                // Перебираем все строки и столбцы в листе
-//                for (int i = 0; i < workbook.getNumberOfSheets(); i++) {
-//                    for (Row r : workbook.getSheetAt(i)) {
-//                        for (int j = 0; j < r.getLastCellNum(); j++) {
-//                            cell = r.getCell(j);
-//                            if (cell != null) {
-//                                // Получаем содержимое ячейки
-//                                String value = cell.getStringCellValue();
-//                                // Записываем значение ячейки в CSV файл с разделителем ";"
-//                                csvStream.write(value.getBytes());
-//                                csvStream.write(";".getBytes());
-//                            }
-//                        }
-//                        csvStream.write("\n".getBytes());
-//                    }
-//                }
-//            }
-//        }
-//    }
+    static List<String> getStringFromFile(String path){
+        try {
+            return Files.readAllLines(Path.of(path), Charset.forName("windows-1251"));
+        } catch (IOException e) {
+            System.err.println("File not found!");
+            throw new RuntimeException(e);
+        }
+    }
 }

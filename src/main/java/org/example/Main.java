@@ -11,12 +11,13 @@ import java.time.format.DateTimeFormatter;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-//        String newDate = new String("01.12.2022 08:14:19");
-//
+        String newDate = new String("2022-12-01");
+
 //        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
-//        LocalDateTime dateTime = LocalDateTime.parse(newDate, formatter);
-//
-//        System.out.println(dateTime.getDayOfWeek());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDateTime dateTime = LocalDateTime.parse(newDate, formatter);
+
+        System.out.println(dateTime.getDayOfWeek());
 
         PaymentRegistry paymentRegistry = new PaymentRegistry();
         ParserData parserData = new ParserData();
