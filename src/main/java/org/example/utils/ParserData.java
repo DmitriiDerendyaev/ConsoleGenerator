@@ -1,15 +1,15 @@
 package org.example.utils;
 
 
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVParser;
+import org.example.models.Payment;
 import org.example.models.PaymentRegistry;
+import org.example.models.PaymentType;
 
 import java.io.*;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -17,38 +17,54 @@ import java.util.List;
 public class ParserData {
 
     public PaymentRegistry ReadRegistry(String path, PaymentRegistry paymentRegistry) throws IOException {
+        PaymentRegistry currentPaymentRegistry = paymentRegistry;
         List<String> readFileContents = getStringFromFile(path);
 
         paymentRegistry.setContractName(readFileContents.get(1).replaceAll(";", ""));
 
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String start = readFileContents.get(3).split(";")[3];
-        String end = readFileContents.get(3).split(";")[4];
-        paymentRegistry.setStartDate(LocalDateTime.parse(readFileContents.get(3).split(";")[3]));
-        paymentRegistry.setEndDate(LocalDateTime.parse(readFileContents.get(3).split(";")[4]));
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        paymentRegistry.setStartDate(LocalDate.parse(readFileContents.get(3).split(";")[3], dateFormatter));
+        paymentRegistry.setEndDate(LocalDate.parse(readFileContents.get(3).split(";")[4], dateFormatter));
 
 
-        for(int i = 1; i < readFileContents.size(); i++){
+        for(int i = 10; i < readFileContents.size(); i++){
+            if(readFileContents.get(i).contains(";;;;")){
+                System.out.println("Парсинг файла окончен");
+                break;
+            }
+
             String[] elementArray = readFileContents.get(i).split(";");
 
-            int checkId = Integer.parseInt(elementArray[0]);
-            int APM;
-            LocalDateTime paymentTime;
-            String operator;
-            String paymentPurpose;
-            String paymentType;
-            int paymentAmount;
-            int BPA_notice;
-            int PNKO_notice;
-            int cashAmount;
-            int cardAmount;
-            int SBP_amount;
-            int organization_BPA_notice;
-            int organization_PNKO_notice;
-            boolean isComplete;
-        }
+            System.out.println(i);
+            int checkId = Integer.parseInt(elementArray[2]);
+            int APM = Integer.parseInt(elementArray[1]);
+            LocalDateTime paymentTime = LocalDateTime.parse(elementArray[0], dateTimeFormatter);
+            String operator = elementArray[3];
+            String paymentPurpose = elementArray[4];
+            String paymentType = null;
+            if(elementArray[5].matches("\\d{20}")){
+                paymentType = PaymentType.FINES.getName();
+            } else if (elementArray[6].matches("\\d{10}")) {
+                paymentType = PaymentType.STATE_DUTY.getName();
+            } else {
+                paymentType = PaymentType.SERVICES.getName();
+            }
+            double paymentAmount = Double.parseDouble(elementArray[8].replaceAll(",", "."));
+            double BPA_notice = Double.parseDouble(elementArray[9].replaceAll(",", "."));
+            double PNKO_notice = Double.parseDouble(elementArray[10].replaceAll(",", "."));
+            double cashAmount = Double.parseDouble(elementArray[11].replaceAll(",", "."));
+            double cardAmount = Double.parseDouble(elementArray[12].replaceAll(",", "."));
+            double SBP_amount = Double.parseDouble(elementArray[13].replaceAll(",", "."));
+            double organization_BPA_notice = Double.parseDouble(elementArray[14].replaceAll(",", "."));
+            double organization_PNKO_notice = Double.parseDouble(elementArray[15].replaceAll(",", "."));
+            boolean isComplete = Boolean.parseBoolean(elementArray[16].replaceAll(",", "."));
 
-        return paymentRegistry;
+            currentPaymentRegistry.addPayment(new Payment(checkId, APM, paymentTime, operator, paymentPurpose, paymentType,
+                    paymentAmount, BPA_notice, PNKO_notice, cashAmount, cardAmount, SBP_amount, organization_BPA_notice,
+                    organization_PNKO_notice, isComplete));
+        }
+        return currentPaymentRegistry;
     }
 
     static List<String> getStringFromFile(String path){

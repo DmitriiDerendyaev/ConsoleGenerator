@@ -10,17 +10,17 @@ public class Payment {
     private String operator;
     private String paymentPurpose;
     private String paymentType;
-    private int paymentAmount;
-    private int BPA_notice;
-    private int PNKO_notice;
-    private int cashAmount;
-    private int cardAmount;
-    private int SBP_amount;
-    private int organization_BPA_notice;
-    private int organization_PNKO_notice;
+    private double paymentAmount;
+    private double BPA_notice;
+    private double PNKO_notice;
+    private double cashAmount;
+    private double cardAmount;
+    private double SBP_amount;
+    private double organization_BPA_notice;
+    private double organization_PNKO_notice;
     private boolean isComplete;
 
-    public Payment(int checkId, int APM, LocalDateTime paymentTime, String operator, String paymentPurpose, String paymentType, int paymentAmount, int BPA_notice, int PNKO_notice, int cashAmount, int cardAmount, int SBP_amount, int organization_BPA_notice, int organization_PNKO_notice, boolean isComplete) {
+    public Payment(int checkId, int APM, LocalDateTime paymentTime, String operator, String paymentPurpose, String paymentType, double paymentAmount, double BPA_notice, double PNKO_notice, double cashAmount, double cardAmount, double SBP_amount, double organization_BPA_notice, double organization_PNKO_notice, boolean isComplete) {
         this.checkId = checkId;
         this.APM = APM;
         this.paymentTime = paymentTime;
@@ -62,35 +62,35 @@ public class Payment {
         return paymentType;
     }
 
-    public int getPaymentAmount() {
+    public double getPaymentAmount() {
         return paymentAmount;
     }
 
-    public int getBPA_notice() {
+    public double getBPA_notice() {
         return BPA_notice;
     }
 
-    public int getPNKO_notice() {
+    public double getPNKO_notice() {
         return PNKO_notice;
     }
 
-    public int getCashAmount() {
+    public double getCashAmount() {
         return cashAmount;
     }
 
-    public int getCardAmount() {
+    public double getCardAmount() {
         return cardAmount;
     }
 
-    public int getSBP_amount() {
+    public double getSBP_amount() {
         return SBP_amount;
     }
 
-    public int getOrganization_BPA_notice() {
+    public double getOrganization_BPA_notice() {
         return organization_BPA_notice;
     }
 
-    public int getOrganization_PNKO_notice() {
+    public double getOrganization_PNKO_notice() {
         return organization_PNKO_notice;
     }
 
