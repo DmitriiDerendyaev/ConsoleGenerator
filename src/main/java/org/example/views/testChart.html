@@ -1,0 +1,17 @@
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">
+
+    </script>
+    <script type="text/javascript">google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);function drawChart() {
+        var data = google.visualization.arrayToDataTable([["Language","Percentage"],["Java",50.0],["Python",20.0],["Ruby",30.0]]);
+        var options = { 'title': 'Programming Languages', 'width': 400, 'height': 300 };
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options); }</script></head>
+
+<body>
+<div id="chart_div">
+</div>
+</body>
+</html>
