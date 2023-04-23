@@ -55,5 +55,52 @@ public class PrepareData {
         return localСashAmount;
     }
 
+    public double getCardAmount(PaymentRegistry paymentRegistry, String paymentType){
+        double localCardAmount = 0.0;
+        ArrayList<Payment> currentPaymentRegistry = paymentRegistry.getPaymentArrayList();
+
+        for (Payment payment : currentPaymentRegistry) {
+            if(payment.getPaymentType().equals(paymentType)){
+                localCardAmount += payment.getPaymentAmount();
+            }
+        }
+        return localCardAmount;
+    }
+
+    public double getSBP_amount(PaymentRegistry paymentRegistry, String paymentType){
+        double localSBP_amount = 0.0;
+        ArrayList<Payment> currentPaymentRegistry = paymentRegistry.getPaymentArrayList();
+
+        for (Payment payment : currentPaymentRegistry) {
+            if(payment.getPaymentType().equals(paymentType)){
+                localSBP_amount += payment.getPaymentAmount();
+            }
+        }
+        return localSBP_amount;
+    }
+
+    public double getOrganization_BPA_notice(PaymentRegistry paymentRegistry, String paymentType){
+        double localOrganization_BPA_notice = 0.0;
+        ArrayList<Payment> currentPaymentRegistry = paymentRegistry.getPaymentArrayList();
+
+        for (Payment payment : currentPaymentRegistry) {
+            if(payment.getPaymentType().equals(paymentType)){
+                localOrganization_BPA_notice += payment.getPaymentAmount();
+            }
+        }
+        return localOrganization_BPA_notice;
+    }
+
+    public double getOrganization_PNKO_notice(PaymentRegistry paymentRegistry, String paymentType){
+        double localOrganization_PNKO_notice = 0.0;
+        ArrayList<Payment> currentPaymentRegistry = paymentRegistry.getPaymentArrayList();
+
+        for (Payment payment : currentPaymentRegistry) {
+            if(payment.getPaymentType().equals(paymentType)){
+                localOrganization_PNKO_notice += payment.getPaymentAmount();
+            }
+        }
+        return localOrganization_PNKO_notice;
+    }
 
 }
