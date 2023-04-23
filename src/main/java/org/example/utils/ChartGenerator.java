@@ -6,6 +6,8 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.example.models.PaymentRegistry;
+import org.example.models.PaymentType;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
@@ -15,28 +17,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChartGenerator {
-    public static void chartGenerate() throws IOException {
-        String data = "['Task', 'Hours per Day']," +
-                "['Work',11]," +
-                "['Eat',2]," +
-                "['Commute',2]," +
-                "['Watch TV',2]," +
-                "['Sleep',7]";
-        String url = "https://chart.googleapis.com/chart?" +
-                "cht=p3&" +
-                "chs=250x100&" +
-                "chd=t:" + data;
-        HttpClient client = HttpClientBuilder.create().build();
-        HttpGet request = new HttpGet(url);
-        HttpResponse response = client.execute(request);
-        // В response.getEntity() содержится ответ от Google Charts в формате PNG или SVG
-    }
-
-    public static void chartGenegateJSON(){
+    public static void chartGenerateJSON(PaymentRegistry paymentRegistry){
         DefaultPieDataset dataset = new DefaultPieDataset();
-        dataset.setValue("Java", 50);
-        dataset.setValue("Python", 20);
-        dataset.setValue("Ruby", 30);
+//        dataset.setValue("Java", 50);
+//        dataset.setValue("Python", 20);
+//        dataset.setValue("Ruby", 30);
+
+        dataset.setValue(PaymentType.FINES.getName(), PrepareData.getPaymentAmount(paymentRegistry,
+                PaymentType.FINES.getName()));
+        dataset.setValue(PaymentType.SERVICES.getName(), PrepareData.getPaymentAmount(paymentRegistry,
+                PaymentType.SERVICES.getName()));
+        dataset.setValue(PaymentType.STATE_DUTY.getName(), PrepareData.getPaymentAmount(paymentRegistry,
+                PaymentType.STATE_DUTY.getName()));
 
         // Создание объекта JFreeChart для диаграммы
         JFreeChart chart = ChartFactory.createPieChart(

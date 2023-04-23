@@ -16,13 +16,14 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
 //        ChartGenerator.chartGenerate();
-//        ChartGenerator.chartGenegateJSON();
 
         PaymentRegistry paymentRegistry = new PaymentRegistry();
         ParserData parserData = new ParserData();
         PrepareData prepareData = new PrepareData();
 
         paymentRegistry = parserData.ReadRegistry("src/main/resources/ReportFull.csv", paymentRegistry);
+
+        ChartGenerator.chartGenerateJSON(paymentRegistry);
 
         System.out.println(prepareData.getPaymentAmount(paymentRegistry, PaymentType.FINES.getName()));
         System.out.println("Tut'");
