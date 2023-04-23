@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class PrepareData {
 
-    public double getPaymentAmount(PaymentRegistry paymentRegistry, String paymentType){
+    public static double getPaymentAmount(PaymentRegistry paymentRegistry, String paymentType){
         double localPaymentAmount = 0.0;
         ArrayList<Payment> currentPaymentRegistry = paymentRegistry.getPaymentArrayList();
 
