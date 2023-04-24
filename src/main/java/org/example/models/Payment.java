@@ -9,7 +9,7 @@ public class Payment {
     private LocalDateTime paymentTime;
     private String operator;
     private String paymentPurpose;
-    private String paymentType;
+    private PaymentType paymentType;
     private double paymentAmount;
     private double BPA_notice;
     private double PNKO_notice;
@@ -20,7 +20,7 @@ public class Payment {
     private double organization_PNKO_notice;
     private boolean isComplete;
 
-    public Payment(int checkId, int APM, LocalDateTime paymentTime, String operator, String paymentPurpose, String paymentType, double paymentAmount, double BPA_notice, double PNKO_notice, double cashAmount, double cardAmount, double SBP_amount, double organization_BPA_notice, double organization_PNKO_notice, boolean isComplete) {
+    public Payment(int checkId, int APM, LocalDateTime paymentTime, String operator, String paymentPurpose, PaymentType paymentType, double paymentAmount, double BPA_notice, double PNKO_notice, double cashAmount, double cardAmount, double SBP_amount, double organization_BPA_notice, double organization_PNKO_notice, boolean isComplete) {
         this.checkId = checkId;
         this.APM = APM;
         this.paymentTime = paymentTime;
@@ -58,7 +58,7 @@ public class Payment {
         return paymentPurpose;
     }
 
-    public String getPaymentType() {
+    public PaymentType getPaymentType() {
         return paymentType;
     }
 
