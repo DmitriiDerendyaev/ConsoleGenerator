@@ -12,7 +12,7 @@ public class PrepareData {
         ArrayList<Payment> currentPaymentRegistry = paymentRegistry.getPaymentArrayList();
 
         for (Payment payment : currentPaymentRegistry) {
-            if(payment.getPaymentType().equals(paymentType)){
+            if(payment.getPaymentType().getName().equals(paymentType)){
                 localPaymentAmount += payment.getPaymentAmount();
             }
         }
