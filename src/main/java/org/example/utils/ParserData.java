@@ -36,19 +36,19 @@ public class ParserData {
 
             String[] elementArray = readFileContents.get(i).split(";");
 
-            System.out.println(i);
+//            /////////System.out.println(i);
             int checkId = Integer.parseInt(elementArray[2]);
             int APM = Integer.parseInt(elementArray[1]);
             LocalDateTime paymentTime = LocalDateTime.parse(elementArray[0], dateTimeFormatter);
             String operator = elementArray[3];
             String paymentPurpose = elementArray[4];
-            String paymentType = null;
+            PaymentType paymentType;
             if(elementArray[5].matches("\\d{20}")){
-                paymentType = PaymentType.FINES.getName();
+                paymentType = PaymentType.FINES;
             } else if (elementArray[6].matches("\\d{10}")) {
-                paymentType = PaymentType.STATE_DUTY.getName();
+                paymentType = PaymentType.STATE_DUTY;
             } else {
-                paymentType = PaymentType.SERVICES.getName();
+                paymentType = PaymentType.SERVICES;
             }
             double paymentAmount = Double.parseDouble(elementArray[8].replaceAll(",", "."));
             double BPA_notice = Double.parseDouble(elementArray[9].replaceAll(",", "."));

@@ -2,33 +2,25 @@ package org.example.utils;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.HttpClientBuilder;
 import org.example.models.PaymentRegistry;
 import org.example.models.PaymentType;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class ChartGenerator {
-    public static void chartGenerateJSON(PaymentRegistry paymentRegistry){
+    public static String chartGenerateJSON(HashMap<PaymentType, Double> paymentMap){
         DefaultPieDataset dataset = new DefaultPieDataset();
-//        dataset.setValue("Java", 50);
-//        dataset.setValue("Python", 20);
-//        dataset.setValue("Ruby", 30);
 
-        dataset.setValue(PaymentType.FINES.getName(), PrepareData.getPaymentAmount(paymentRegistry,
-                PaymentType.FINES.getName()));
-        dataset.setValue(PaymentType.SERVICES.getName(), PrepareData.getPaymentAmount(paymentRegistry,
-                PaymentType.SERVICES.getName()));
-        dataset.setValue(PaymentType.STATE_DUTY.getName(), PrepareData.getPaymentAmount(paymentRegistry,
-                PaymentType.STATE_DUTY.getName()));
+        for(PaymentType currentType: paymentMap.keySet()){
+            dataset.setValue(currentType.getName(), paymentMap.get(currentType));
+        }
 
         // Создание объекта JFreeChart для диаграммы
         JFreeChart chart = ChartFactory.createPieChart(
@@ -52,31 +44,24 @@ public class ChartGenerator {
         jsonObject.add("data", dataArray);
         String jsonString = gson.toJson(jsonObject);
 
-        JsonParser parser = new JsonParser();
-        JsonObject jsonObject2 = parser.parse(jsonString).getAsJsonObject();
-        String chartType = jsonObject2.get("chartType").getAsString();
-        JsonArray dataArray2 = jsonObject.get("data").getAsJsonArray();
-        List<List<Object>> data = new ArrayList<>();
-        for (JsonElement element : dataArray2) {
-            List<Object> row = new Gson().fromJson(element, new TypeToken<List<Object>>() {}.getType());
-            data.add(row);
-        }
+        System.out.println(jsonString);
 
-        // Создание объекта Google Charts и отображение диаграммы на веб-странице
+        return jsonString;
+    }
+
+    private String prepareFullHTML(JsonObject jsonObject){
         StringBuilder html = new StringBuilder();
         html.append("<html><head><script type=\"text/javascript\" src=\"https://www.gstatic.com/charts/loader.js\"></script>");
         html.append("<script type=\"text/javascript\">google.charts.load('current', {'packages':['corechart']});");
         html.append("google.charts.setOnLoadCallback(drawChart);");
         html.append("function drawChart() { var data = google.visualization.arrayToDataTable(");
-        html.append(new Gson().toJson(data));
+        html.append(new Gson().toJson(jsonObject));
         html.append("); var options = { 'title': 'Programming Languages', 'width': 400, 'height': 300 };");
-        html.append("var chart = new google.visualization." + chartType + "(document.getElementById('chart_div'));");
+        html.append("var chart = new google.visualization." + jsonObject.get("chartType").getAsString() + "(document.getElementById('chart_div'));");
         html.append("chart.draw(data, options); }</script></head><body><div id=\"chart_div\"></div></body></html>");
 
-        System.out.println(html.toString());
-
-        // Отображение диаграммы Google Charts
-        System.out.println(jsonString);
+        return html.toString();
     }
+
 
 }

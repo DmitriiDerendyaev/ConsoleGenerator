@@ -12,92 +12,92 @@ public class PrepareData {
         ArrayList<Payment> currentPaymentRegistry = paymentRegistry.getPaymentArrayList();
 
         for (Payment payment : currentPaymentRegistry) {
-            if(payment.getPaymentType().equals(paymentType)){
+            if(payment.getPaymentType().getName().equals(paymentType)){
                 localPaymentAmount += payment.getPaymentAmount();
             }
         }
         return localPaymentAmount;
     }
 
-    public double getBPA_notice(PaymentRegistry paymentRegistry, String paymentType){
+    public static double getBPA_notice(PaymentRegistry paymentRegistry, String paymentType){
         double localBPA_notice = 0.0;
         ArrayList<Payment> currentPaymentRegistry = paymentRegistry.getPaymentArrayList();
 
         for (Payment payment : currentPaymentRegistry) {
-            if(payment.getPaymentType().equals(paymentType)){
-                localBPA_notice += payment.getPaymentAmount();
+            if(payment.getPaymentType().getName().equals(paymentType)){
+                localBPA_notice += payment.getBPA_notice();
             }
         }
         return localBPA_notice;
     }
 
-    public double getPNKO_notice(PaymentRegistry paymentRegistry, String paymentType){
+    public static double getPNKO_notice(PaymentRegistry paymentRegistry, String paymentType){
         double localPNKO_notice = 0.0;
         ArrayList<Payment> currentPaymentRegistry = paymentRegistry.getPaymentArrayList();
 
         for (Payment payment : currentPaymentRegistry) {
-            if(payment.getPaymentType().equals(paymentType)){
-                localPNKO_notice += payment.getPaymentAmount();
+            if(payment.getPaymentType().getName().equals(paymentType)){
+                localPNKO_notice += payment.getPNKO_notice();
             }
         }
         return localPNKO_notice;
     }
 
-    public double getСashAmount(PaymentRegistry paymentRegistry, String paymentType){
-        double localСashAmount = 0.0;
+    public static double getCashAmount(PaymentRegistry paymentRegistry, String paymentType){
+        double localCashAmount = 0.0;
         ArrayList<Payment> currentPaymentRegistry = paymentRegistry.getPaymentArrayList();
 
         for (Payment payment : currentPaymentRegistry) {
-            if(payment.getPaymentType().equals(paymentType)){
-                localСashAmount += payment.getPaymentAmount();
+            if(payment.getPaymentType().getName().equals(paymentType)){
+                localCashAmount += payment.getCashAmount();
             }
         }
-        return localСashAmount;
+        return localCashAmount;
     }
 
-    public double getCardAmount(PaymentRegistry paymentRegistry, String paymentType){
+    public static double getCardAmount(PaymentRegistry paymentRegistry, String paymentType){
         double localCardAmount = 0.0;
         ArrayList<Payment> currentPaymentRegistry = paymentRegistry.getPaymentArrayList();
 
         for (Payment payment : currentPaymentRegistry) {
-            if(payment.getPaymentType().equals(paymentType)){
-                localCardAmount += payment.getPaymentAmount();
+            if(payment.getPaymentType().getName().equals(paymentType)){
+                localCardAmount += payment.getCardAmount();
             }
         }
         return localCardAmount;
     }
 
-    public double getSBP_amount(PaymentRegistry paymentRegistry, String paymentType){
+    public static double getSBP_amount(PaymentRegistry paymentRegistry, String paymentType){
         double localSBP_amount = 0.0;
         ArrayList<Payment> currentPaymentRegistry = paymentRegistry.getPaymentArrayList();
 
         for (Payment payment : currentPaymentRegistry) {
-            if(payment.getPaymentType().equals(paymentType)){
-                localSBP_amount += payment.getPaymentAmount();
+            if(payment.getPaymentType().getName().equals(paymentType)){
+                localSBP_amount += payment.getSBP_amount();
             }
         }
         return localSBP_amount;
     }
 
-    public double getOrganization_BPA_notice(PaymentRegistry paymentRegistry, String paymentType){
+    public static double getOrganization_BPA_notice(PaymentRegistry paymentRegistry, String paymentType){
         double localOrganization_BPA_notice = 0.0;
         ArrayList<Payment> currentPaymentRegistry = paymentRegistry.getPaymentArrayList();
 
         for (Payment payment : currentPaymentRegistry) {
-            if(payment.getPaymentType().equals(paymentType)){
-                localOrganization_BPA_notice += payment.getPaymentAmount();
+            if(payment.getPaymentType().getName().equals(paymentType)){
+                localOrganization_BPA_notice += payment.getOrganization_BPA_notice();
             }
         }
         return localOrganization_BPA_notice;
     }
 
-    public double getOrganization_PNKO_notice(PaymentRegistry paymentRegistry, String paymentType){
+    public static double getOrganization_PNKO_notice(PaymentRegistry paymentRegistry, String paymentType){
         double localOrganization_PNKO_notice = 0.0;
         ArrayList<Payment> currentPaymentRegistry = paymentRegistry.getPaymentArrayList();
 
         for (Payment payment : currentPaymentRegistry) {
-            if(payment.getPaymentType().equals(paymentType)){
-                localOrganization_PNKO_notice += payment.getPaymentAmount();
+            if(payment.getPaymentType().getName().equals(paymentType)){
+                localOrganization_PNKO_notice += payment.getOrganization_PNKO_notice();
             }
         }
         return localOrganization_PNKO_notice;
