@@ -1,10 +1,12 @@
 package org.example;
 
+import org.example.models.PaymentParameter;
 import org.example.models.PaymentRegistry;
 import org.example.models.PaymentType;
 import org.example.utils.ChartGenerator;
 import org.example.utils.ParserData;
 import org.example.utils.PrepareData;
+import org.example.utils.PrepareMapToChart;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -23,11 +25,9 @@ public class Main {
 
         paymentRegistry = parserData.ReadRegistry("src/main/resources/ReportFull.csv", paymentRegistry);
 
-        ChartGenerator.chartGenerateJSON(paymentRegistry);
+        ChartGenerator.chartGenerateJSON(PrepareMapToChart.getChartMap(paymentRegistry, PaymentParameter.CASH_AMOUNT));
 
         System.out.println(prepareData.getPaymentAmount(paymentRegistry, PaymentType.FINES.getName()));
         System.out.println("Tut'");
-
-
     }
 }
