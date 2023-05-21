@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="english" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>exported project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+    </style>
+    <style data-tag="default-style-sheet">
+      html {
+        font-family: Inter;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
+
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div>
+      <link href="frame.css" rel="stylesheet" />
+
+      <div class="frame-container">
+        <div class="frame-frame">
+          <div class="frame-file-selectinput">
+            <span class="frame-text">
+              <span>
+                D:\ELPLAT\Отчёт по платежам агента 2022-12-01_2022-12-31(4).xls
+              </span>
+            </span>
+    <form action="#" th:action="@{/handleButtonClick}" th:method="post">
+        <button type="submit" class="frame-browsebutton" onclick="handleButtonClick()">
+            <img src="public/playground_assets/rectangle21499-wr3-200h.png" alt="Rectangle21499" class="frame-rectangle2" />
+            <span class="frame-text02"><span>BROWSE</span></span>
+        </button>
+    </form>
+          </div>
+          <div class="frame-file-selectinput1">
+            <img
+              src="public/playground_assets/ellipse121491-vh4-200h.png"
+              alt="Ellipse121491"
+              class="frame-ellipse12"
+            />
+            <span class="frame-text04"><span>Дерендяев Д.С.</span></span>
+          </div>
+          <div class="frame-create-generation-paramentrs">
+            <span class="frame-text06"><span>Настройкa генерации</span></span>
+            <div class="frame-dropdown">
+              <span class="frame-text08"><span>Тип диаграммы</span></span>
+              <div class="frame-text-input">
+                <span class="frame-text10 Body">
+                  <span>Линейная диаграмма</span>
+                </span>
+                <img
+                  src="public/playground_assets/iconschevrondowni149-85f.svg"
+                  alt="IconschevrondownI149"
+                  class="frame-iconschevrondown"
+                />
+              </div>
+            </div>
+            <div class="frame-optionlist">
+              <div class="frame-assets-optionitem">
+                <div class="frame-content">
+                  <div class="frame-checkbox">
+                    <div class="frame-assets-check">
+                      <img
+                        src="public/playground_assets/checkboxi149-hw0h-200h.png"
+                        alt="CheckboxI149"
+                        class="frame-checkbox01"
+                      />
+                    </div>
+                    <span class="frame-text12"><span>Сумма</span></span>
+                  </div>
+                </div>
+              </div>
+              <div class="frame-assets-optionitem1">
+                <div class="frame-content1">
+                  <div class="frame-checkbox02">
+                    <div class="frame-assets-check1">
+                      <img
+                        src="public/playground_assets/checkboxi149-nrgw-200h.png"
+                        alt="CheckboxI149"
+                        class="frame-checkbox03"
+                      />
+                      <img
+                        src="public/playground_assets/ticksmallminori149-e0ik.svg"
+                        alt="ticksmallminorI149"
+                        class="frame-ticksmallminor"
+                      />
+                    </div>
+                    <span class="frame-text14"><span>Шляпа</span></span>
+                  </div>
+                </div>
+              </div>
+              <div class="frame-assets-optionitem2">
+                <div class="frame-content2">
+                  <div class="frame-checkbox04">
+                    <div class="frame-assets-check2">
+                      <img
+                        src="public/playground_assets/checkboxi149-mn6b-200h.png"
+                        alt="CheckboxI149"
+                        class="frame-checkbox05"
+                      />
+                    </div>
+                    <span class="frame-text16"><span>Не шляпа</span></span>
+                  </div>
+                </div>
+              </div>
+              <div class="frame-assets-optionitem3">
+                <div class="frame-content3">
+                  <div class="frame-checkbox06">
+                    <div class="frame-assets-check3">
+                      <img
+                        src="public/playground_assets/checkboxi149-q9aa-200h.png"
+                        alt="CheckboxI149"
+                        class="frame-checkbox07"
+                      />
+                    </div>
+                    <span class="frame-text18"><span>Default</span></span>
+                  </div>
+                </div>
+              </div>
+              <div class="frame-assets-optionitem4">
+                <div class="frame-content4">
+                  <div class="frame-checkbox08">
+                    <div class="frame-assets-check4">
+                      <img
+                        src="public/playground_assets/checkboxi149-42zf-200h.png"
+                        alt="CheckboxI149"
+                        class="frame-checkbox09"
+                      />
+                    </div>
+                    <span class="frame-text20"><span>Default</span></span>
+                  </div>
+                </div>
+              </div>
+              <div class="frame-assets-optionitem5">
+                <div class="frame-content5">
+                  <div class="frame-checkbox10">
+                    <div class="frame-assets-check5">
+                      <img
+                        src="public/playground_assets/checkboxi149-xfgs-200h.png"
+                        alt="CheckboxI149"
+                        class="frame-checkbox11"
+                      />
+                    </div>
+                    <span class="frame-text22"><span>Default</span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="frame-dowloadbutton">
+              <img
+                src="public/playground_assets/rectangle21499-lssw-200h.png"
+                alt="Rectangle21499"
+                class="frame-rectangle21"
+              />
+              <span class="frame-text24"><span>Скачать</span></span>
+            </button>
+          </div>
+          <div class="frame-frame29">
+            <button class="frame-report-listbutton">
+              <span class="frame-text26"><span>Список отчетов</span></span>
+            </button>
+            <button class="frame-view-registrybutton">
+              <span class="frame-text28"><span>Просмотр реестра</span></span>
+            </button>
+            <button class="frame-f-qbutton">
+              <span class="frame-text30"><span>Справка</span></span>
+            </button>
+          </div>
+          <div class="frame-frame291">
+            <div class="frame-imageplaceholder">
+              <img
+                src="public/playground_assets/iconsimagei149-r0hd.svg"
+                alt="IconsimageI149"
+                class="frame-iconsimage"
+              />
+            </div>
+          </div>
+          <div class="frame-frame292">
+            <span class="frame-text32"><span>Показатели</span></span>
+            <span class="frame-text34"><span>Сумма: 1000 руб.</span></span>
+            <span class="frame-text36"><span>Сумма: 1000 руб.</span></span>
+            <span class="frame-text38"><span>Сумма: 1000 руб.</span></span>
+            <span class="frame-text40"><span>Сумма: 1000 руб.</span></span>
+            <span class="frame-text42"><span>Сумма: 1000 руб.</span></span>
+            <span class="frame-text44"><span>Сумма: 1000 руб.</span></span>
+            <span class="frame-text46"><span>Сумма: 1000 руб.</span></span>
+            <span class="frame-text48"><span>Сумма: 1000 руб.</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+      <script src="script.js"></script>
+      
+  </body>
+</html>

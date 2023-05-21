@@ -1,3 +1,4 @@
 # Project exclude paths
 /target/
 /src/main/resources/ReportFull.csv
+/src/main/resources/fodsFormat.csv
