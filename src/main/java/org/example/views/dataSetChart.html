@@ -5,10 +5,7 @@
   <script type="text/javascript">google.charts.load('current', {'packages':['corechart']});
   google.charts.setOnLoadCallback(drawChart);
   function drawChart() {
-    var data = google.visualization.arrayToDataTable([["Language","Percentage"],
-      ["Штрафы и налоги",180735.04],
-      ["Государственные услуги",9023119.879999999],
-      ["Государственная пошлина",2474905.0]]);
+    var data = google.visualization.arrayToDataTable([["Language","Percentage"],["Государственные услуги",1202565.0],["Государственная пошлина",323330.0],["Штрафы и налоги",26168.0]]);
     var options = { 'title': 'Первая выгрузка', 'width': 600, 'height': 300 };
     var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
     chart.draw(data, options); }
