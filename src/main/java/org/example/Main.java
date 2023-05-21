@@ -23,9 +23,9 @@ public class Main {
         ParserData parserData = new ParserData();
         PrepareData prepareData = new PrepareData();
 
-        paymentRegistry = parserData.ReadRegistry("src/main/resources/ReportFull.csv", paymentRegistry);
+        paymentRegistry = parserData.ReadRegistry("src/main/resources/fodsFormat.csv", paymentRegistry);
 
-        ChartGenerator.chartGenerateJSON(PrepareMapToChart.getChartMap(paymentRegistry, PaymentParameter.CASH_AMOUNT));
+        ChartGenerator.chartGenerateJSON(PrepareMapToChart.getChartMap(paymentRegistry, PaymentParameter.BPA_NOTICE));
 
         System.out.println(prepareData.getPaymentAmount(paymentRegistry, PaymentType.FINES.getName()));
         System.out.println("Tut'");
