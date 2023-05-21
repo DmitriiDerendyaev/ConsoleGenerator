@@ -37,15 +37,16 @@ public class ParserData {
             String[] elementArray = readFileContents.get(i).split(";");
 
 //            /////////System.out.println(i);
-            int checkId = Integer.parseInt(elementArray[2]);
-            int APM = Integer.parseInt(elementArray[1]);
             LocalDateTime paymentTime = LocalDateTime.parse(elementArray[0], dateTimeFormatter);
+            int APM = Integer.parseInt(elementArray[1]);
+            int checkId = Integer.parseInt(elementArray[2]);
             String operator = elementArray[3];
             String paymentPurpose = elementArray[4];
+
             PaymentType paymentType;
             if(elementArray[5].matches("\\d{20}")){
                 paymentType = PaymentType.FINES;
-            } else if (elementArray[6].matches("\\d{10}")) {
+            } else if (elementArray[6].matches("\\d{10}")) {//внести изменения по 8 значному числу + ГОСУДАРСТВЕННАЯ ПОШЛИНА
                 paymentType = PaymentType.STATE_DUTY;
             } else {
                 paymentType = PaymentType.SERVICES;
