@@ -1,24 +1,29 @@
 .frame-container {
   width: 100%;
+  height: 100vh;
   display: flex;
   overflow: auto;
-  min-height: 100vh;
   align-items: center;
+  justify-content: center; /* ƒобавили выравнивание по центру по горизонтали */
   flex-direction: column;
 }
+
 .frame-frame {
   width: 100%;
-  height: 720px;
+  height: 100%;
   display: flex;
   overflow: hidden;
   position: relative;
-  align-items: flex-start;
+  align-items: center; /* »зменили выравнивание по вертикали на центр */
+  justify-content: center; /* ƒобавили выравнивание по горизонтали */
   flex-shrink: 0;
   background-color: var(--dl-color-default-bggrey);
 }
+
 .frame-frame1 {
-  top: 196px;
-  left: 329px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 621px;
   height: 327.15771484375px;
   display: flex;
