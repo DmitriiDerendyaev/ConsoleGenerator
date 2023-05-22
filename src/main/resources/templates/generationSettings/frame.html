@@ -46,8 +46,8 @@
                 D:\ELPLAT\Отчёт по платежам агента 2022-12-01_2022-12-31(4).xls
               </span>
             </span>
-              <form action="#" th:action="@{/handleButtonClick}" th:method="post">
-                  <button type="submit" class="frame-browsebutton" onclick="handleButtonClick()">
+              <form action="#" th:action="@{/handleButtonClick}" th:method="GET">
+                  <button type="submit" class="frame-browsebutton button-active button-hover" onclick="handleButtonClick()">
                       <img src="/generationSetting/public/playground_assets/rectangle21499-wr3-200h.png" alt="Rectangle21499" class="frame-rectangle2" />
                       <span class="frame-text02"><span>BROWSE</span></span>
                   </button>
@@ -65,127 +65,124 @@
             <span class="frame-text06"><span>Настройкa генерации</span></span>
             <div class="frame-dropdown">
               <span class="frame-text08"><span>Тип диаграммы</span></span>
+              <form action="/submit" method="post">
               <div class="frame-text-input">
-                <span class="frame-text10 Body">
-                  <span>Линейная диаграмма</span>
-                </span>
-                <img
-                  src="/generationSetting/public/playground_assets/iconschevrondowni149-85f.svg"
-                  alt="IconschevrondownI149"
-                  class="frame-iconschevrondown"
-                />
+        <span class="frame-text10 Body">
+        </span>
+                <select name="chartType">
+                  <option value="absolute">Абсолютные показатели</option>
+                  <option value="relative">Относительные показатели</option>
+                </select>
               </div>
             </div>
-            <div class="frame-optionlist">
-              <div class="frame-assets-optionitem">
-                <div class="frame-content">
-                  <div class="frame-checkbox">
-                    <div class="frame-assets-check">
-                      <img
-                        src="/generationSetting/public/playground_assets/checkboxi149-hw0h-200h.png"
-                        alt="CheckboxI149"
-                        class="frame-checkbox01"
-                      />
+
+              <div class="frame-optionlist">
+                <div class="frame-assets-optionitem">
+                  <div class="frame-content">
+                    <div class="frame-radio">
+                      <div class="frame-assets-radio">
+                        <input type="radio" id="radio1" name="radio" value="Сумма платежа" />
+                        <label for="radio1">Сумма платежа</label>
+                      </div>
                     </div>
-                    <span class="frame-text12"><span>Сумма</span></span>
+                  </div>
+                </div>
+                <div class="frame-assets-optionitem1">
+                  <div class="frame-content1">
+                    <div class="frame-radio02">
+                      <div class="frame-assets-radio1">
+                        <input type="radio" id="radio2" name="radio" value="Сумма извещения БПА" checked />
+                        <label for="radio2">Сумма извещения БПА</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="frame-assets-optionitem2">
+                  <div class="frame-content2">
+                    <div class="frame-radio04">
+                      <div class="frame-assets-radio2">
+                        <input type="radio" id="radio3" name="radio" value="Сумма извещения ПНКО" />
+                        <label for="radio3">Сумма извещения ПНКО</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="frame-assets-optionitem3">
+                  <div class="frame-content3">
+                    <div class="frame-radio06">
+                      <div class="frame-assets-radio3">
+                        <input type="radio" id="radio4" name="radio" value="Сумма наличными" />
+                        <label for="radio4">Сумма наличными</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="frame-assets-optionitem4">
+                  <div class="frame-content4">
+                    <div class="frame-radio08">
+                      <div class="frame-assets-radio4">
+                        <input type="radio" id="radio5" name="radio" value="Сумма картой" />
+                        <label for="radio5">Сумма картой</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="frame-assets-optionitem5">
+                  <div class="frame-content5">
+                    <div class="frame-radio10">
+                      <div class="frame-assets-radio5">
+                        <input type="radio" id="radio6" name="radio" value="Сумма СБП" />
+                        <label for="radio6">Сумма СБП</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="frame-assets-optionitem6">
+                  <div class="frame-content6">
+                    <div class="frame-radio12">
+                      <div class="frame-assets-radio6">
+                        <input type="radio" id="radio7" name="radio" value="Сумма Организации (БПА)" />
+                        <label for="radio7">Сумма Организации (БПА)</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="frame-assets-optionitem7">
+                  <div class="frame-content7">
+                    <div class="frame-radio14">
+                      <div class="frame-assets-radio7">
+                        <input type="radio" id="radio8" name="radio" value="Сумма Организации (ПНКО)" />
+                        <label for="radio8">Сумма Организации (ПНКО)</label>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="frame-assets-optionitem1">
-                <div class="frame-content1">
-                  <div class="frame-checkbox02">
-                    <div class="frame-assets-check1">
-                      <img
-                        src="/generationSetting/public/playground_assets/checkboxi149-nrgw-200h.png"
-                        alt="CheckboxI149"
-                        class="frame-checkbox03"
-                      />
-                      <img
-                        src="/generationSetting/public/playground_assets/ticksmallminori149-e0ik.svg"
-                        alt="ticksmallminorI149"
-                        class="frame-ticksmallminor"
-                      />
-                    </div>
-                    <span class="frame-text14"><span>Шляпа</span></span>
-                  </div>
-                </div>
-              </div>
-              <div class="frame-assets-optionitem2">
-                <div class="frame-content2">
-                  <div class="frame-checkbox04">
-                    <div class="frame-assets-check2">
-                      <img
-                        src="/generationSetting/public/playground_assets/checkboxi149-mn6b-200h.png"
-                        alt="CheckboxI149"
-                        class="frame-checkbox05"
-                      />
-                    </div>
-                    <span class="frame-text16"><span>Не шляпа</span></span>
-                  </div>
-                </div>
-              </div>
-              <div class="frame-assets-optionitem3">
-                <div class="frame-content3">
-                  <div class="frame-checkbox06">
-                    <div class="frame-assets-check3">
-                      <img
-                        src="/generationSetting/public/playground_assets/checkboxi149-q9aa-200h.png"
-                        alt="CheckboxI149"
-                        class="frame-checkbox07"
-                      />
-                    </div>
-                    <span class="frame-text18"><span>Default</span></span>
-                  </div>
-                </div>
-              </div>
-              <div class="frame-assets-optionitem4">
-                <div class="frame-content4">
-                  <div class="frame-checkbox08">
-                    <div class="frame-assets-check4">
-                      <img
-                        src="/generationSetting/public/playground_assets/checkboxi149-42zf-200h.png"
-                        alt="CheckboxI149"
-                        class="frame-checkbox09"
-                      />
-                    </div>
-                    <span class="frame-text20"><span>Default</span></span>
-                  </div>
-                </div>
-              </div>
-              <div class="frame-assets-optionitem5">
-                <div class="frame-content5">
-                  <div class="frame-checkbox10">
-                    <div class="frame-assets-check5">
-                      <img
-                        src="/generationSetting/public/playground_assets/checkboxi149-xfgs-200h.png"
-                        alt="CheckboxI149"
-                        class="frame-checkbox11"
-                      />
-                    </div>
-                    <span class="frame-text22"><span>Default</span></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <button class="frame-dowloadbutton">
-              <img
-                src="/generationSetting/public/playground_assets/rectangle21499-lssw-200h.png"
-                alt="Rectangle21499"
-                class="frame-rectangle21"
-              />
-              <span class="frame-text24"><span>Скачать</span></span>
-            </button>
+              <button class="frame-dowloadbutton button-active button-hover">
+                <img src="/generationSetting/public/playground_assets/rectangle21499-lssw-200h.png" alt="Rectangle21499" class="frame-rectangle21" />
+                <span class="frame-text24"><span>Сгенерировать</span></span>
+              </button>
+            </form>
+
+
+
           </div>
           <div class="frame-frame29">
-            <button class="frame-report-listbutton">
+            <form action="#" th:action="@{/mainPage}" th:method="GET">
+            <button class="frame-report-listbutton button-active button-hover">
               <span class="frame-text26"><span>Список отчетов</span></span>
             </button>
-            <button class="frame-view-registrybutton">
+            </form>
+            <form action="#" th:action="@{/viewRegistry}" th:method="GET">
+            <button class="frame-view-registrybutton  button-hover">
               <span class="frame-text28"><span>Просмотр реестра</span></span>
             </button>
-            <button class="frame-f-qbutton">
+            </form>
+            <form action="#" th:action="@{/404}" th:method="GET">
+            <button class="frame-f-qbutton button-active button-hover">
               <span class="frame-text30"><span>Справка</span></span>
             </button>
+            </form>
           </div>
           <div class="frame-frame291">
             <div class="frame-imageplaceholder">
@@ -198,14 +195,38 @@
           </div>
           <div class="frame-frame292">
             <span class="frame-text32"><span>Показатели</span></span>
-            <span class="frame-text34"><span>Сумма: 1000 руб.</span></span>
-            <span class="frame-text36"><span>Сумма: 1000 руб.</span></span>
-            <span class="frame-text38"><span>Сумма: 1000 руб.</span></span>
-            <span class="frame-text40"><span>Сумма: 1000 руб.</span></span>
-            <span class="frame-text42"><span>Сумма: 1000 руб.</span></span>
-            <span class="frame-text44"><span>Сумма: 1000 руб.</span></span>
-            <span class="frame-text46"><span>Сумма: 1000 руб.</span></span>
-            <span class="frame-text48"><span>Сумма: 1000 руб.</span></span>
+
+            <span class="frame-text34">
+    Сумма платежа: <span th:text="${sumPayment}"></span> руб.
+  </span>
+
+            <span class="frame-text36">
+    Сумма извещения БПА: <span th:text="${sumBPA}"></span> руб.
+  </span>
+
+            <span class="frame-text38">
+    Сумма извещения ПНКО: <span th:text="${sumPNKO}"></span> руб.
+  </span>
+
+            <span class="frame-text40">
+    Сумма наличными: <span th:text="${sumCash}"></span> руб.
+  </span>
+
+            <span class="frame-text42">
+    Сумма картой: <span th:text="${sumCard}"></span> руб.
+  </span>
+
+            <span class="frame-text44">
+    Сумма СБП: <span th:text="${sumSBP}"></span> руб.
+  </span>
+
+            <span class="frame-text46">
+    Сумма Организации (БПА): <span th:text="${sumOrgBPA}"></span> руб.
+  </span>
+
+            <span class="frame-text48">
+    Сумма Организации (ПНКО): <span th:text="${sumOrgPNKO}"></span> руб.
+  </span>
           </div>
         </div>
       </div>

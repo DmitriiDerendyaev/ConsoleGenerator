@@ -64,7 +64,13 @@
   flex-shrink: 0;
   border-radius: 20px;
 }
-.frame-browsebutton:active {
+.button-active:active {
+  transform: scale(0.90); /* Уменьшаем масштаб кнопки */
+}
+.button-hover:hover{
+  background-color: rgba(200, 200, 200, 1); /* Изменяем цвет фона при наведении курсора */
+  transition: background-color 0.3s; /* Добавляем плавный переход */
+  cursor: pointer; /* Добавляем курсор-указатель */
   transform: scale(0.95); /* Уменьшаем масштаб кнопки */
 }
 .frame-rectangle2 {
@@ -189,8 +195,8 @@
   text-decoration: none;
 }
 .frame-text-input {
-  gap: 10px;
-  width: 215px;
+  gap: 13px;
+  width: 270px;
   height: 47px;
   display: flex;
   padding: 12px;
@@ -224,9 +230,9 @@
 .frame-optionlist {
   gap: 4px;
   top: 145px;
-  left: 23px;
-  width: 186px;
-  height: 252px;
+  left: 15px;
+  width: 270px;
+  height: 320px; /* Увеличенная высота */
   display: flex;
   padding: 8px 0;
   position: absolute;
@@ -237,9 +243,11 @@
   border-width: 1px;
   border-radius: 8px;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* Изменено на flex-start */
+  overflow-y: auto; /* Добавлено для прокрутки, если кнопки не вмещаются */
   background-color: var(--dl-color-surface-default);
 }
+
 .frame-assets-optionitem {
   gap: 10px;
   display: flex;
@@ -312,7 +320,6 @@
   align-items: flex-start;
   border-radius: 4px;
   flex-direction: column;
-  background-color: var(--dl-color-gray-100);
 }
 .frame-checkbox02 {
   gap: 8px;
