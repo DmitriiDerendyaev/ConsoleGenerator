@@ -14,6 +14,10 @@ public class GenerateController {
         return "greeting/greeting";
     }
 
+    @GetMapping("/generate")
+    public String generate(){
+        return "generationSettings/frame";
+    }
 //    @GetMapping("/getChart")
 //    public String getChart(@RequestParam()){
 //        return "";
