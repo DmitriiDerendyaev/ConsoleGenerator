@@ -18,10 +18,6 @@ public class GenerateController {
     public String generate(){
         return "generationSettings/frame";
     }
-//    @GetMapping("/getChart")
-//    public String getChart(@RequestParam()){
-//        return "";
-//    }
 
 
 }
