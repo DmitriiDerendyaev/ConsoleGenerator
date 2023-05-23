@@ -770,6 +770,7 @@
   border-width: 1px;
   border-radius: 20px;
   background-color: rgba(255, 255, 255, 1);
+  overflow-y: auto; /* Добавлено для прокрутки, если кнопки не вмещаются */
 }
 
 .frame-text32 {

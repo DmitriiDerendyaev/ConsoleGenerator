@@ -48,6 +48,29 @@
   flex-shrink: 0;
   border-radius: 20px;
 }
+
+.frame-input {
+  width: 275px; /* Уменьшаем ширину поля ввода */
+  height: 38px;
+  padding: 0 10px;
+  border: none;
+  border-radius: 20px;
+  position: absolute; /* Изменяем позиционирование на absolute */
+  top: 9px; /* Выравниваем вертикально с кнопкой */
+  left: 10px; /* Позиционируем справа от кнопки */
+  font-size: 14px;
+}
+
+.button-active:active {
+  transform: scale(0.90); /* Уменьшаем масштаб кнопки */
+}
+.button-hover:hover{
+  background-color: rgba(200, 200, 200, 1); /* Изменяем цвет фона при наведении курсора */
+  transition: background-color 0.3s; /* Добавляем плавный переход */
+  cursor: pointer; /* Добавляем курсор-указатель */
+  transform: scale(0.95); /* Уменьшаем масштаб кнопки */
+}
+
 .frame-rectangle2 {
   top: 9px;
   left: 7px;

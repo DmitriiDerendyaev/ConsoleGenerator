@@ -37,63 +37,42 @@
   <body>
     <div>
       <link href="fillRegistration/frame.css" rel="stylesheet" />
+      <form action="/fillRegistration-endpoint" method="post" th:action="@{/fillRegistration-endpoint}">
+        <div class="frame-container">
+          <div class="frame-frame">
+            <div class="frame-frame7">
+              <span class="frame-text"><a href="/404"><span>Регистрация</span></a></span>
+              <div class="frame-frame22input">
+                <input type="text" class="frame-frame32input frame-input-full" name="name" placeholder="Введите имя" />
+              </div>
+              <div class="frame-frame23input">
+                <input type="text" class="frame-frame32input frame-input-full" name="patronymic" placeholder="Введите отчество" />
+              </div>
+              <div class="frame-frame24input">
+                <input type="text" class="frame-frame32input frame-input-full" name="phone" placeholder="Введите номер телефона" />
+              </div>
+              <div class="frame-frame25input">
+                <input type="text" class="frame-frame32input frame-input-full" name="email" placeholder="Введите адрес электронной почты" />
+              </div>
 
-      <div class="frame-container">
-        <div class="frame-frame">
-          <div class="frame-frame7">
-            <span class="frame-text"><span>Регистрация</span></span>
-            <div class="frame-frame22input">
-              <img
-                src="/fillRegistration/public/playground_assets/rectangle21581-i2ds-200h.png"
-                alt="Rectangle21581"
-                class="frame-rectangle2"
-              />
-              <span class="frame-text02"><span>Имя</span></span>
+              <div class="frame-frame26input">
+                <input type="text" class="frame-frame32input frame-input-full" name="surname" placeholder="Введите фамилию" />
+              </div>
+
+              <button class="frame-frame22button button-active button-hover" type="submit">
+                <img
+                        src="/fillRegistration/public/playground_assets/rectangle31581-95xg-200h.png"
+                        alt="Rectangle31581"
+                        class="frame-rectangle3"
+                />
+                <span class="frame-text12"><span>SIGN UP</span></span>
+              </button>
+              <span class="frame-text14"><a href="/404"><span>Some information</span></a></span>
             </div>
-            <div class="frame-frame23input">
-              <img
-                src="/fillRegistration/public/playground_assets/rectangle21581-onync-200h.png"
-                alt="Rectangle21581"
-                class="frame-rectangle21"
-              />
-              <span class="frame-text04"><span>Отчество</span></span>
-            </div>
-            <div class="frame-frame24input">
-              <img
-                src="/fillRegistration/public/playground_assets/rectangle21581-7a1d-200h.png"
-                alt="Rectangle21581"
-                class="frame-rectangle22"
-              />
-              <span class="frame-text06"><span>Мобильный телефон</span></span>
-            </div>
-            <div class="frame-frame25input">
-              <img
-                src="/fillRegistration/public/playground_assets/rectangle21581-ue37-200h.png"
-                alt="Rectangle21581"
-                class="frame-rectangle23"
-              />
-              <span class="frame-text08"><span>Электронная почта</span></span>
-            </div>
-            <div class="frame-frame26input">
-              <img
-                src="/fillRegistration/public/playground_assets/rectangle21581-wo2-200h.png"
-                alt="Rectangle21581"
-                class="frame-rectangle24"
-              />
-              <span class="frame-text10"><span>Фамилия</span></span>
-            </div>
-            <button class="frame-frame22button">
-              <img
-                src="/fillRegistration/public/playground_assets/rectangle31581-95xg-200h.png"
-                alt="Rectangle31581"
-                class="frame-rectangle3"
-              />
-              <span class="frame-text12"><span>SIGN UP</span></span>
-            </button>
-            <span class="frame-text14"><span>Some information</span></span>
           </div>
         </div>
-      </div>
+      </form>
+
     </div>
   </body>
 </html>

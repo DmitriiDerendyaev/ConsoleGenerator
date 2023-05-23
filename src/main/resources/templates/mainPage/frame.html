@@ -40,34 +40,44 @@
 
       <div class="frame-container">
         <div class="frame-frame">
+
           <div class="frame-file-selectinput">
-            <button class="frame-browsebutton">
-              <img
-                src="/mainPage/public/playground_assets/rectangle21576-1ag-200h.png"
-                alt="Rectangle21576"
-                class="frame-rectangle2"
-              />
+            <form action="#" th:action="@{/mainSearch}" method="post">
+            <button type="submit" class="frame-browsebutton button-hover button-active">
+              <img src="/mainPage/public/playground_assets/rectangle21576-1ag-200h.png" alt="Rectangle21576" class="frame-rectangle2" />
               <span class="frame-text"><span>Поиск</span></span>
             </button>
+            <input class="frame-input" type="text" name="searchQuery" placeholder="Введите поисковой запрос" />
+            </form>
           </div>
-          <div class="frame-file-selectinput1">
-            <img
-              src="/mainPage/public/playground_assets/ellipse121576-v28-200h.png"
-              alt="Ellipse121576"
-              class="frame-ellipse12"
-            />
-            <span class="frame-text02"><span>Дерендяев Д.С.</span></span>
-          </div>
+
+          <form action="#" th:action="@{/account}" th:method="GET">
+            <button class="frame-file-selectinput1 button-hover button-active">
+              <img
+                      src="/mainPage/public/playground_assets/ellipse121576-v28-200h.png"
+                      alt="Ellipse121576"
+                      class="frame-ellipse12 button-hover"
+              />
+              <span class="frame-text02"><span>Дерендяев Д.С.</span></span>
+            </button>
+          </form>
+
           <div class="frame-frame30">
-            <button class="frame-report-listbutton">
-              <span class="frame-text04"><span>Новый отчет</span></span>
-            </button>
-            <button class="frame-view-registrybutton">
-              <span class="frame-text06"><span>Просмотр реестра</span></span>
-            </button>
-            <button class="frame-f-qbutton">
-              <span class="frame-text08"><span>Справка</span></span>
-            </button>
+            <form action="#" th:action="@{/generate}" th:method="GET">
+              <button class="frame-report-listbutton button-active button-hover">
+                <span class="frame-text04"><span>Новый отчет</span></span>
+              </button>
+            </form>
+            <form action="#" th:action="@{/viewRegistry}" th:method="GET">
+              <button class="frame-view-registrybutton  button-hover">
+                <span class="frame-text06"><span>Просмотр реестра</span></span>
+              </button>
+            </form>
+            <form action="#" th:action="@{/404}" th:method="GET">
+              <button class="frame-f-qbutton button-active button-hover">
+                <span class="frame-text08"><span>Справка</span></span>
+              </button>
+            </form>
           </div>
           <div class="frame-frame28">
             <span class="frame-text10"><span>Отчетности, список</span></span>

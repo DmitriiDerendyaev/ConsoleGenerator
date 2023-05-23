@@ -41,26 +41,24 @@
       <div class="frame-container">
         <div class="frame-frame">
           <div class="frame-file-selectinput">
-            <span class="frame-text">
-              <span>
-                D:\ELPLAT\Отчёт по платежам агента 2022-12-01_2022-12-31(4).xls
-              </span>
-            </span>
-              <form action="#" th:action="@{/handleButtonClick}" th:method="GET">
-                  <button type="submit" class="frame-browsebutton button-active button-hover" onclick="handleButtonClick()">
-                      <img src="/generationSetting/public/playground_assets/rectangle21499-wr3-200h.png" alt="Rectangle21499" class="frame-rectangle2" />
-                      <span class="frame-text02"><span>BROWSE</span></span>
-                  </button>
-              </form>
+            <form action="#" th:action="@{/handleButtonClick}" th:method="POST" enctype="multipart/form-data">
+              <input type="file" name="file" id="file" th:onchange="'selected-file.textContent = this.files[0].name'" />
+              <button type="submit" class="frame-browsebutton button-active button-hover" onclick="handleButtonClick()">
+                <img src="/generationSetting/public/playground_assets/rectangle21499-wr3-200h.png" alt="Rectangle21499" class="frame-rectangle2" />
+                <span class="frame-text02"><span>BROWSE</span></span>
+              </button>
+            </form>
           </div>
-          <div class="frame-file-selectinput1">
+          <form action="#" th:action="@{/account}" th:method="GET">
+          <button class="frame-file-selectinput1 button-hover button-active">
             <img
               src="/generationSetting/public/playground_assets/ellipse121491-vh4-200h.png"
               alt="Ellipse121491"
-              class="frame-ellipse12"
+              class="frame-ellipse12 button-hover"
             />
             <span class="frame-text04"><span>Дерендяев Д.С.</span></span>
-          </div>
+          </button>
+          </form>
           <div class="frame-create-generation-paramentrs">
             <span class="frame-text06"><span>Настройкa генерации</span></span>
             <div class="frame-dropdown">
@@ -74,6 +72,7 @@
                   <option value="relative">Относительные показатели</option>
                 </select>
               </div>
+
             </div>
 
               <div class="frame-optionlist">
@@ -163,10 +162,9 @@
                 <span class="frame-text24"><span>Сгенерировать</span></span>
               </button>
             </form>
-
-
-
           </div>
+
+
           <div class="frame-frame29">
             <form action="#" th:action="@{/mainPage}" th:method="GET">
             <button class="frame-report-listbutton button-active button-hover">

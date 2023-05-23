@@ -64,6 +64,17 @@
   flex-shrink: 0;
   border-radius: 20px;
 }
+
+.button-active:active {
+  transform: scale(0.90); /* Уменьшаем масштаб кнопки */
+}
+.button-hover:hover{
+  background-color: rgba(200, 200, 200, 1); /* Изменяем цвет фона при наведении курсора */
+  transition: background-color 0.3s; /* Добавляем плавный переход */
+  cursor: pointer; /* Добавляем курсор-указатель */
+  transform: scale(0.95); /* Уменьшаем масштаб кнопки */
+}
+
 .frame-rectangle2 {
   top: 9px;
   left: 7px;
@@ -96,7 +107,8 @@
   display: flex;
   overflow: hidden;
   position: absolute;
-  align-items: flex-start;
+  align-items: center; /* Выравнивание по вертикали в центре */
+  justify-content: center; /* Выравнивание по горизонтали в центре */
   flex-shrink: 0;
   border-color: rgba(0, 0, 0, 1);
   border-style: solid;
@@ -104,6 +116,18 @@
   border-radius: 20px;
   background-color: rgba(255, 255, 255, 1);
 }
+
+.frame-file-selectinput span {
+  font-size: 24px; /* Измените размер шрифта по вашему усмотрению */
+}
+
+.frame-file-selectinput span.frame-text {
+  font-size: 24px; /* Измените размер шрифта по вашему усмотрению */
+  display: flex;
+  justify-content: center; /* Выравнивание по горизонтали внутри .frame-file-selectinput */
+  align-items: center; /* Выравнивание по вертикали внутри .frame-file-selectinput */
+}
+
 .frame-ellipse12 {
   top: 6px;
   left: 223px;

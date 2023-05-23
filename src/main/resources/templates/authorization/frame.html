@@ -38,46 +38,30 @@
     <div>
       <link href="authorization/frame.css" rel="stylesheet" />
 
-      <div class="frame-container">
-        <div class="frame-frame">
-          <div class="frame-frame1">
-            <span class="frame-text"><span>Forgot password?</span></span>
-            <span class="frame-text02"><span>Sign UP</span></span>
-            <img
-              src="/authorization/public/playground_assets/line151444-dsai.svg"
-              alt="Line151444"
-              class="frame-line15"
-            />
-            <span class="frame-text04 greetingsTitle">
-              <span>Авторизация</span>
-            </span>
-            <div class="frame-frame32input">
-              <img
-                src="/authorization/public/playground_assets/rectangle2input1444-7pu-200h.png"
-                alt="Rectangle2input1444"
-                class="frame-rectangle2input"
-              />
-              <span class="frame-text06"><span>PASSWORD</span></span>
+      <form action="/your-server-endpoint" method="post" th:action="@{/your-server-endpoint}">
+        <div class="frame-container">
+          <div class="frame-frame">
+            <div class="frame-frame1">
+              <a href="/404" class="frame-text"><span>FAQ</span></a>
+              <a href="/fillRegistration" class="frame-text02"><span>Sign UP</span></a>
+              <img src="/authorization/public/playground_assets/line151444-dsai.svg" alt="Line151444" class="frame-line15" />
+              <span class="frame-text04 greetingsTitle">
+                    <span>Авторизация</span>
+                </span>
+              <div class="frame-frame32input">
+                <input type="password" class="frame-input frame-input-full" name="password" placeholder="Password" />
+              </div>
+              <div class="frame-frame33input">
+                <input type="text" class="frame-input frame-input-full" name="login" placeholder="Login" />
+              </div>
+              <button class="frame-frame34button button-hover button-active" type="submit">
+                <img src="/authorization/public/playground_assets/rectangle3button1444-abt9-200h.png" alt="Rectangle3button1444" class="frame-rectangle3button" />
+                <span class="frame-text10"><span>SIGN IN</span></span>
+              </button>
             </div>
-            <div class="frame-frame33input">
-              <img
-                src="/authorization/public/playground_assets/rectangle1input1444-4haa-200h.png"
-                alt="Rectangle1input1444"
-                class="frame-rectangle1input"
-              />
-              <span class="frame-text08"><span>LOGIN</span></span>
-            </div>
-            <button class="frame-frame34button">
-              <img
-                src="/authorization/public/playground_assets/rectangle3button1444-abt9-200h.png"
-                alt="Rectangle3button1444"
-                class="frame-rectangle3button"
-              />
-              <span class="frame-text10"><span>SIGN IN</span></span>
-            </button>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   </body>
 </html>
