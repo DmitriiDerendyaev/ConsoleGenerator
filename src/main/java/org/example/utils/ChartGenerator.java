@@ -31,12 +31,12 @@ public class ChartGenerator {
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("chartType", "PieChart");
         JsonArray dataArray = new JsonArray();
-        List<String> columns = new ArrayList<String>();
+        List<String> columns = new ArrayList<>();
         columns.add("Language");
         columns.add("Percentage");
         dataArray.add(gson.toJsonTree(columns));
         for (int i = 0; i < dataset.getItemCount(); i++) {
-            List<Object> data = new ArrayList<Object>();
+            List<Object> data = new ArrayList<>();
             data.add(dataset.getKey(i));
             data.add(dataset.getValue(i));
             dataArray.add(gson.toJsonTree(data));
