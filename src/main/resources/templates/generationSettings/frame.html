@@ -40,31 +40,31 @@
 
       <div class="frame-container">
         <div class="frame-frame">
+          <form action="#" th:action="@{/account}" th:method="GET">
+            <button class="frame-file-selectinput1 button-hover button-active">
+              <img
+                      src="/generationSetting/public/playground_assets/ellipse121491-vh4-200h.png"
+                      alt="Ellipse121491"
+                      class="frame-ellipse12 button-hover"
+              />
+              <span class="frame-text04"><span>Дерендяев Д.С.</span></span>
+            </button>
+          </form>
           <div class="frame-file-selectinput">
             <form action="#" th:action="@{/handleButtonClick}" th:method="POST" enctype="multipart/form-data">
               <input type="file" name="file" id="file" onchange="handleFileSelect(this)" />
-              <button type="submit" class="frame-browsebutton button-active button-hover">
-                <img src="/generationSetting/public/playground_assets/rectangle21499-wr3-200h.png" alt="Rectangle21499"
-                     class="frame-rectangle2" />
-                <span class="frame-text02"><span>PARSE</span></span>
-              </button>
-            </form>
+<!--              <button type="submit" class="frame-browsebutton button-active button-hover">-->
+<!--                <img src="/generationSetting/public/playground_assets/rectangle21499-wr3-200h.png" alt="Rectangle21499"-->
+<!--                     class="frame-rectangle2" />-->
+<!--                <span class="frame-text02"><span>PARSE</span></span>-->
+<!--              </button>-->
+
+
           </div>
-          <form action="#" th:action="@{/account}" th:method="GET">
-          <button class="frame-file-selectinput1 button-hover button-active">
-            <img
-              src="/generationSetting/public/playground_assets/ellipse121491-vh4-200h.png"
-              alt="Ellipse121491"
-              class="frame-ellipse12 button-hover"
-            />
-            <span class="frame-text04"><span>Дерендяев Д.С.</span></span>
-          </button>
-          </form>
           <div class="frame-create-generation-paramentrs">
             <span class="frame-text06"><span>Настройкa генерации</span></span>
             <div class="frame-dropdown">
               <span class="frame-text08"><span>Тип диаграммы</span></span>
-              <form action="/submit" method="post">
               <div class="frame-text-input">
         <span class="frame-text10 Body">
         </span>
@@ -186,21 +186,24 @@
           <div class="frame-frame291">
             <div id="chart_div" class="chart-container"></div>
             <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-            <script type="text/javascript">
+            <script th:inline="javascript" type="text/javascript">
               google.charts.load('current', {'packages':['corechart']});
               google.charts.setOnLoadCallback(drawChart);
+
               function drawChart() {
                 var data = google.visualization.arrayToDataTable([
                   ["Language","Percentage"],
-                  ["Государственные услуги",1202565.0],
-                  ["Государственная пошлина",323330.0],
-                  ["Штрафы и налоги",26168.0]
+                  ["Штрафы и налоги",180735.04],
+                  ["Государственные услуги",9023119.879999999],
+                  ["Государственная пошлина",2474905.0]
                 ]);
                 var options = {
-                  'title': 'Первая выгрузка',
-                  'width': 600,
-                  'height': 300
+                  "title": "Первая выгрузка",
+                  "width": 600,
+                  "height": 300
                 };
+              }
+
                 var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
                 chart.draw(data, options);
               }
