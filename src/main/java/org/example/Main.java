@@ -19,15 +19,15 @@ public class Main {
 
 //        ChartGenerator.chartGenerate();
 
-        PaymentRegistry paymentRegistry = new PaymentRegistry();
-        ParserData parserData = new ParserData();
-        PrepareData prepareData = new PrepareData();
-
-        paymentRegistry = parserData.ReadRegistry("src/main/resources/fodsFormat.csv", paymentRegistry);
-
-        ChartGenerator.chartGenerateJSON(PrepareMapToChart.getChartMap(paymentRegistry, PaymentParameter.BPA_NOTICE));
-
-        System.out.println(prepareData.getPaymentAmount(paymentRegistry, PaymentType.FINES.getName()));
+//        PaymentRegistry paymentRegistry = new PaymentRegistry();
+//        ParserData parserData = new ParserData();
+//        PrepareData prepareData = new PrepareData();
+//
+//        paymentRegistry = parserData.ReadRegistry("src/main/resources/fodsFormat.csv", paymentRegistry);
+//
+//        ChartGenerator.chartGenerateJSON(PrepareMapToChart.getChartMap(paymentRegistry, PaymentParameter.BPA_NOTICE));
+//
+//        System.out.println(prepareData.getPaymentAmount(paymentRegistry, PaymentType.FINES.getName()));
         System.out.println("Tut'");
     }
 }
