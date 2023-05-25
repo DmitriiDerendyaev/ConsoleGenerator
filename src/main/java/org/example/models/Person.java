@@ -1,7 +1,22 @@
 package org.example.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
+import java.util.List;
+
+@Entity
+@Table(name = "persons")
 public class Person {
-    private int id;
+
+    @Id
+    private Long id;
+
+    @OneToMany(mappedBy = "person")
+    private List<InteractionHistory> interactionHistoryList;
+
     private String name;
     private String patronymic;
     private String phone;
@@ -9,62 +24,64 @@ public class Person {
     private String surname;
 
     public Person() {
-        // Пустой конструктор
     }
 
-    public Person(int id, String name, String patronymic, String phone, String email, String surname) {
-        this.id = id;
-        this.name = name;
-        this.patronymic = patronymic;
-        this.phone = phone;
-        this.email = email;
-        this.surname = surname;
-    }
+    // Добавьте геттеры и сеттеры для всех полей
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
+
+    public List<InteractionHistory> getInteractionHistoryList() {
+        return interactionHistoryList;
+    }
+
+    public void setInteractionHistoryList(List<InteractionHistory> interactionHistoryList) {
+        this.interactionHistoryList = interactionHistoryList;
+    }
+
     public String getName() {
         return name;
-    }
-
-    public String getPatronymic() {
-        return patronymic;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getSurname() {
-        return surname;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public String getPatronymic() {
+        return patronymic;
+    }
+
     public void setPatronymic(String patronymic) {
         this.patronymic = patronymic;
+    }
+
+    public String getPhone() {
+        return phone;
     }
 
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getSurname() {
+        return surname;
     }
 
     public void setSurname(String surname) {
         this.surname = surname;
     }
+
 }
