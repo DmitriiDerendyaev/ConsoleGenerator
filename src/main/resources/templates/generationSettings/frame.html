@@ -191,21 +191,61 @@
               google.charts.setOnLoadCallback(drawChart);
 
               function drawChart() {
-                var data = google.visualization.arrayToDataTable([
-                  ["Language","Percentage"],
-                  ["Штрафы и налоги",[[${sumPayment}]]],
-                  ["Государственные услуги",[[${sumPayment}]]],
-                  ["Государственная пошлина",[[${sumPayment}]]]
-                ]);
-                var options = {
-                  "title": "Первая выгрузка",
-                  "width": 500,
-                  "height": 300
-                };
 
-                var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-                chart.draw(data, options);
+                let fines = [[${fines}]]; // Предполагается, что переменная fines уже определена и содержит значение
+                let services = [[${services}]]; // Предполагается, что переменная services уже определена и содержит значение
+                let state = [[${state}]]; // Предполагается, что переменная state уже определена и содержит значение
+
+// Проверка и замена переменных
+                if (fines === null || fines === undefined || fines === 0.0) {
+                  fines = 0.1;
+                }
+
+                if (services === null || services === undefined || services === 0.0) {
+                  services = 0.1;
+                }
+
+                if (state === null || state === undefined || state === 0.0) {
+                  state = 0.1;
+                }
+                if ("[[${typeDiagram}]]" === "relative") {
+                  var data = google.visualization.arrayToDataTable([
+                    ["Language", "Percentage"],
+                    ["Штрафы и налоги", fines],
+                    ["Государственные услуги", services],
+                    ["Государственная пошлина", state]
+                  ]);
+                  var options = {
+                    "title": "[[${typeGeneration}]]",
+                    "width": 750,
+                    "height": 450
+                  };
+
+                  var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+                  chart.draw(data, options);
+                } else {
+                  var data = google.visualization.arrayToDataTable([
+                    ["Language", "Percentage"],
+                    ["Штрафы и налоги", fines],
+                    ["Государственные услуги", services],
+                    ["Государственная пошлина", state]
+                  ]);
+
+                  var options = {
+                    'title': '[[${typeGeneration}]]',
+                    'width': 600,
+                    'height': 300,
+                    'legend': { position: 'none' },
+                    'vAxis': { title: 'Language' },
+                    'hAxis': { title: 'Percentage' },
+                    'bars': 'horizontal'
+                  };
+
+                  var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+                  chart.draw(data, options);
+                }
               }
+
             </script>
           </div>
 
