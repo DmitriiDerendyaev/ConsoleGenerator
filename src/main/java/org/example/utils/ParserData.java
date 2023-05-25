@@ -4,6 +4,7 @@ package org.example.utils;
 import org.example.models.Payment;
 import org.example.models.PaymentRegistry;
 import org.example.models.PaymentType;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
 import java.nio.charset.Charset;
@@ -12,13 +13,14 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ParserData {
 
-    public PaymentRegistry ReadRegistry(String path, PaymentRegistry paymentRegistry) throws IOException {
+    public PaymentRegistry ReadRegistry(MultipartFile file, PaymentRegistry paymentRegistry) throws IOException {
         PaymentRegistry currentPaymentRegistry = paymentRegistry;
-        List<String> readFileContents = getStringFromFile(path);
+        List<String> readFileContents = parseFile(file);
 
         paymentRegistry.setContractName(readFileContents.get(1).replaceAll(";", ""));
 
@@ -68,12 +70,21 @@ public class ParserData {
         return currentPaymentRegistry;
     }
 
-    static List<String> getStringFromFile(String path){
-        try {
-            return Files.readAllLines(Path.of(path), Charset.forName("windows-1251"));
-        } catch (IOException e) {
-            System.err.println("File not found!");
-            throw new RuntimeException(e);
+    public static List<String> parseFile(MultipartFile file) {
+        List<String> lines = new ArrayList<>();
+
+        if (file != null && !file.isEmpty()) {
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    lines.add(line);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                // рас рас и готово рас рас и готово
+            }
         }
+
+        return lines;
     }
 }
