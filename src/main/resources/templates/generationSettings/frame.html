@@ -186,29 +186,29 @@
           <div class="frame-frame291">
             <div id="chart_div" class="chart-container"></div>
             <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-            <script th:inline="javascript" type="text/javascript">
+            <script type="text/javascript">
               google.charts.load('current', {'packages':['corechart']});
               google.charts.setOnLoadCallback(drawChart);
 
               function drawChart() {
                 var data = google.visualization.arrayToDataTable([
                   ["Language","Percentage"],
-                  ["Штрафы и налоги",180735.04],
-                  ["Государственные услуги",9023119.879999999],
-                  ["Государственная пошлина",2474905.0]
+                  ["Штрафы и налоги",[[${sumPayment}]]],
+                  ["Государственные услуги",[[${sumPayment}]]],
+                  ["Государственная пошлина",[[${sumPayment}]]]
                 ]);
                 var options = {
                   "title": "Первая выгрузка",
-                  "width": 600,
+                  "width": 500,
                   "height": 300
                 };
-              }
 
                 var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
                 chart.draw(data, options);
               }
             </script>
           </div>
+
 
           <div class="frame-frame292">
             <span class="frame-text32"><span>Показатели</span></span>
