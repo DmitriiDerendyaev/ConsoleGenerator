@@ -15,7 +15,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ChartGenerator {
-    public static String chartGenerateJSON(HashMap<PaymentType, Double> paymentMap){
+    public static String chartPieGenerateJSON(HashMap<PaymentType, Double> paymentMap, String paymentParameter){
+
         DefaultPieDataset dataset = new DefaultPieDataset();
 
         for(PaymentType currentType: paymentMap.keySet()){
@@ -49,16 +50,44 @@ public class ChartGenerator {
         return jsonString;
     }
 
+    public static String chartGenerateJSON(HashMap<PaymentType, Double> paymentMap, String paymentParameter) {
+
+        DefaultPieDataset dataset = new DefaultPieDataset();
+
+        for (PaymentType currentType : paymentMap.keySet()) {
+            dataset.setValue(currentType.getName(), paymentMap.get(currentType));
+        }
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("function drawChart() {\n");
+        stringBuilder.append("var data = google.visualization.arrayToDataTable([\n");
+        stringBuilder.append("[\"Language\",\"Percentage\"],\n");
+
+        for (int i = 0; i < dataset.getItemCount(); i++) {
+            stringBuilder.append("[\"");
+            stringBuilder.append(dataset.getKey(i));
+            stringBuilder.append("\",");
+            stringBuilder.append(dataset.getValue(i));
+            stringBuilder.append("],\n");
+        }
+
+        stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(","));
+        stringBuilder.append("]);\n");
+        stringBuilder.append("var options = {\n");
+        stringBuilder.append("\"title\": \"Первая выгрузка\",\n");
+        stringBuilder.append("\"width\": 600,\n");
+        stringBuilder.append("\"height\": 300\n");
+        stringBuilder.append("};\n");
+
+        return stringBuilder.toString();
+    }
+
+
     private String prepareFullHTML(JsonObject jsonObject){
         StringBuilder html = new StringBuilder();
-        html.append("<html><head><script type=\"text/javascript\" src=\"https://www.gstatic.com/charts/loader.js\"></script>");
-        html.append("<script type=\"text/javascript\">google.charts.load('current', {'packages':['corechart']});");
-        html.append("google.charts.setOnLoadCallback(drawChart);");
         html.append("function drawChart() { var data = google.visualization.arrayToDataTable(");
         html.append(new Gson().toJson(jsonObject));
         html.append("); var options = { 'title': 'Programming Languages', 'width': 400, 'height': 300 };");
-        html.append("var chart = new google.visualization." + jsonObject.get("chartType").getAsString() + "(document.getElementById('chart_div'));");
-        html.append("chart.draw(data, options); }</script></head><body><div id=\"chart_div\"></div></body></html>");
 
         return html.toString();
     }
