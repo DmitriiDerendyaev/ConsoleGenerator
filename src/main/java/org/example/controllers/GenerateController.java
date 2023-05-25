@@ -1,8 +1,10 @@
 package org.example.controllers;
 
+import org.example.models.Payment;
 import org.example.models.PaymentParameter;
 import org.example.models.PaymentRegistry;
 import org.example.models.PaymentType;
+import org.example.services.PaymentService;
 import org.example.utils.ChartGenerator;
 import org.example.utils.ParserData;
 import org.example.utils.PrepareData;
@@ -23,6 +25,11 @@ import java.util.HashMap;
 
 @Controller
 public class GenerateController {
+    private final PaymentService paymentService;
+
+    public GenerateController(PaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
 
     @GetMapping("/generate")
     public String generate(){
@@ -37,6 +44,12 @@ public class GenerateController {
         ParserData parserData = new ParserData();
 
         paymentRegistry = parserData.ReadRegistry(file, paymentRegistry);
+
+//        for (Payment payment : paymentRegistry.getPaymentArrayList()) {
+//            System.out.println("checkID: " + payment.getCheckId());
+//            paymentService.addPayment(payment);
+//        }
+
 
 
         switch (radio){
