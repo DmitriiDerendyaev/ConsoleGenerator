@@ -1,0 +1,18 @@
+CREATE TABLE report (
+    id BIGINT PRIMARY KEY,
+    name VARCHAR(255),
+    generation_time TIMESTAMP,
+    generated_by_person_id BIGINT,
+    diagram_type VARCHAR(255),
+    sum_payment FLOAT,
+    sum_bpa FLOAT,
+    sum_pnko FLOAT,
+    sum_cash FLOAT,
+    sum_card FLOAT,
+    sum_sbp FLOAT,
+    sum_org_bpa FLOAT,
+    sum_org_pnko FLOAT,
+    time_range_start TIMESTAMP,
+    time_range_end TIMESTAMP,
+    CONSTRAINT fk_person FOREIGN KEY (generated_by_person_id) REFERENCES person(id)
+);

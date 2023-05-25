@@ -1,0 +1,8 @@
+CREATE TABLE person (
+    id INT PRIMARY KEY,
+    name VARCHAR(255),
+    patronymic VARCHAR(255),
+    phone VARCHAR(255),
+    email VARCHAR(255),
+    surname VARCHAR(255)
+);

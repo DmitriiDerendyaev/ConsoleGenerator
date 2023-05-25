@@ -1,0 +1,17 @@
+CREATE TABLE payment (
+    check_id INT,
+    apm INT,
+    payment_time TIMESTAMP,
+    operator VARCHAR(255),
+    payment_purpose VARCHAR(255),
+    payment_type VARCHAR(255),
+    payment_amount FLOAT,
+    bpa_notice FLOAT,
+    pnko_notice FLOAT,
+    cash_amount FLOAT,
+    card_amount FLOAT,
+    sbp_amount FLOAT,
+    organization_bpa_notice FLOAT,
+    organization_pnko_notice FLOAT,
+    is_complete BOOLEAN
+);

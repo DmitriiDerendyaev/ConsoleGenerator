@@ -1,0 +1,9 @@
+CREATE TABLE interaction_history (
+    id BIGINT PRIMARY KEY,
+    report_id BIGINT,
+    person_id INT,
+    interaction_time TIMESTAMP,
+    action_type VARCHAR(255),
+    CONSTRAINT fk_report FOREIGN KEY (report_id) REFERENCES report(id),
+    CONSTRAINT fk_person FOREIGN KEY (person_id) REFERENCES person(id)
+);
