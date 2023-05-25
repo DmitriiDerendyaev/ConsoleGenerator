@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 
 @Controller
@@ -37,22 +38,81 @@ public class GenerateController {
 
         paymentRegistry = parserData.ReadRegistry(file, paymentRegistry);
 
-        if(chartType.equals("relative")){
-            switch (radio){
-                case "Сумма платежа":
-                {
-                    model.addAttribute("diagram",
-                            ChartGenerator.chartGenerateJSON(PrepareMapToChart.getChartMap(paymentRegistry, PaymentParameter.PAYMENT_AMOUNT), PaymentParameter.PAYMENT_AMOUNT.getName()));
-                    System.out.println("Так выглядит вывод: " + ChartGenerator.chartGenerateJSON(PrepareMapToChart.getChartMap(paymentRegistry, PaymentParameter.PAYMENT_AMOUNT), PaymentParameter.PAYMENT_AMOUNT.getName()));
-                }
-                default:
-                    System.out.println("Неверный тип данных для диаграммы");
+
+        switch (radio){
+            case "Сумма платежа":
+            {
+                HashMap<PaymentType, Double> chartMap = PrepareMapToChart.getChartMap(paymentRegistry, PaymentParameter.PAYMENT_AMOUNT);
+                model.addAttribute("fines", chartMap.get(PaymentType.FINES));
+                model.addAttribute("services", chartMap.get(PaymentType.SERVICES));
+                model.addAttribute("state", chartMap.get(PaymentType.STATE_DUTY));
+                break;
             }
+            case "Сумма извещения БПА":
+            {
+                HashMap<PaymentType, Double> chartMap = PrepareMapToChart.getChartMap(paymentRegistry, PaymentParameter.BPA_NOTICE);
+                model.addAttribute("fines", chartMap.get(PaymentType.FINES));
+                model.addAttribute("services", chartMap.get(PaymentType.SERVICES));
+                model.addAttribute("state", chartMap.get(PaymentType.STATE_DUTY));
+                break;
+
+            }
+            case "Сумма извещения ПНКО":
+            {
+                HashMap<PaymentType, Double> chartMap = PrepareMapToChart.getChartMap(paymentRegistry, PaymentParameter.PNKO_NOTICE);
+                model.addAttribute("fines", chartMap.get(PaymentType.FINES));
+                model.addAttribute("services", chartMap.get(PaymentType.SERVICES));
+                model.addAttribute("state", chartMap.get(PaymentType.STATE_DUTY));
+                break;
+            }
+            case "Сумма наличными":
+            {
+                HashMap<PaymentType, Double> chartMap = PrepareMapToChart.getChartMap(paymentRegistry, PaymentParameter.CASH_AMOUNT);
+                model.addAttribute("fines", chartMap.get(PaymentType.FINES));
+                model.addAttribute("services", chartMap.get(PaymentType.SERVICES));
+                model.addAttribute("state", chartMap.get(PaymentType.STATE_DUTY));
+                break;
+            }
+            case "Сумма картой":
+            {
+                HashMap<PaymentType, Double> chartMap = PrepareMapToChart.getChartMap(paymentRegistry, PaymentParameter.CARD_AMOUNT);
+                model.addAttribute("fines", chartMap.get(PaymentType.FINES));
+                model.addAttribute("services", chartMap.get(PaymentType.SERVICES));
+                model.addAttribute("state", chartMap.get(PaymentType.STATE_DUTY));
+                break;
+            }
+            case "Сумма СБП":
+            {
+                HashMap<PaymentType, Double> chartMap = PrepareMapToChart.getChartMap(paymentRegistry, PaymentParameter.SBP_AMOUNT);
+                model.addAttribute("fines", chartMap.get(PaymentType.FINES));
+                model.addAttribute("services", chartMap.get(PaymentType.SERVICES));
+                model.addAttribute("state", chartMap.get(PaymentType.STATE_DUTY));
+                break;
+            }
+            case "Сумма Организации (БПА)":
+            {
+                HashMap<PaymentType, Double> chartMap = PrepareMapToChart.getChartMap(paymentRegistry, PaymentParameter.ORGANIZATION_BPA_NOTICE);
+                model.addAttribute("fines", chartMap.get(PaymentType.FINES));
+                model.addAttribute("services", chartMap.get(PaymentType.SERVICES));
+                model.addAttribute("state", chartMap.get(PaymentType.STATE_DUTY));
+                break;
+            }
+            case "Сумма Организации (ПНКО)":
+            {
+                HashMap<PaymentType, Double> chartMap = PrepareMapToChart.getChartMap(paymentRegistry, PaymentParameter.ORGANIZATION_PNKO_NOTICE);
+                model.addAttribute("fines", chartMap.get(PaymentType.FINES));
+                model.addAttribute("services", chartMap.get(PaymentType.SERVICES));
+                model.addAttribute("state", chartMap.get(PaymentType.STATE_DUTY));
+                break;
+            }
+            default:
+                System.out.println("Неверный тип данных для диаграммы");
         }
 
+        model.addAttribute("typeGeneration", radio);
+        model.addAttribute("typeDiagram", chartType);
 
         model.addAttribute("sumPayment", PrepareData.getTotalPaymentAmount(paymentRegistry));
-        System.out.println(PrepareData.getTotalPaymentAmount(paymentRegistry));
         model.addAttribute("sumBPA", PrepareData.getTotalBPA_notice(paymentRegistry));
         model.addAttribute("sumPNKO", PrepareData.getTotalPNKO_notice(paymentRegistry));
         model.addAttribute("sumCash", PrepareData.getTotalCashAmount(paymentRegistry));
@@ -67,16 +127,5 @@ public class GenerateController {
         return "generationSettings/frame";
     }
 
-
-    @PostMapping("/submitDiagram")
-    public String submitForm(@RequestParam("chartType") String chartType,
-                             @RequestParam("radio") String radio) {
-        System.out.println("Chart Type: " + chartType);
-        System.out.println("Selected Radio: " + radio);
-
-        // Дополнительная логика обработки данных формы может быть добавлена здесь
-
-        return "generationSettings/frame"; // Перенаправление на страницу успешного завершения
-    }
 
 }
