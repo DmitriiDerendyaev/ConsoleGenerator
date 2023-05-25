@@ -7,6 +7,87 @@ import java.util.ArrayList;
 
 public class PrepareData {
 
+    public static double getTotalPaymentAmount(PaymentRegistry paymentRegistry){
+        double totalPaymentAmount = 0.0;
+        ArrayList<Payment> currentPaymentRegistry = paymentRegistry.getPaymentArrayList();
+
+        for (Payment payment : currentPaymentRegistry) {
+            totalPaymentAmount += payment.getPaymentAmount();
+        }
+        return totalPaymentAmount;
+    }
+
+    public static double getTotalBPA_notice(PaymentRegistry paymentRegistry){
+        double totalBPA_notice = 0.0;
+        ArrayList<Payment> currentPaymentRegistry = paymentRegistry.getPaymentArrayList();
+
+        for (Payment payment : currentPaymentRegistry) {
+            totalBPA_notice += payment.getBPA_notice();
+        }
+        return totalBPA_notice;
+    }
+
+    public static double getTotalPNKO_notice(PaymentRegistry paymentRegistry){
+        double totalPNKO_notice = 0.0;
+        ArrayList<Payment> currentPaymentRegistry = paymentRegistry.getPaymentArrayList();
+
+        for (Payment payment : currentPaymentRegistry) {
+            totalPNKO_notice += payment.getPNKO_notice();
+        }
+        return totalPNKO_notice;
+    }
+
+    public static double getTotalCashAmount(PaymentRegistry paymentRegistry){
+        double totalCashAmount = 0.0;
+        ArrayList<Payment> currentPaymentRegistry = paymentRegistry.getPaymentArrayList();
+
+        for (Payment payment : currentPaymentRegistry) {
+            totalCashAmount += payment.getCashAmount();
+        }
+        return totalCashAmount;
+    }
+
+    public static double getTotalCardAmount(PaymentRegistry paymentRegistry){
+        double totalCardAmount = 0.0;
+        ArrayList<Payment> currentPaymentRegistry = paymentRegistry.getPaymentArrayList();
+
+        for (Payment payment : currentPaymentRegistry) {
+            totalCardAmount += payment.getCardAmount();
+        }
+        return totalCardAmount;
+    }
+
+    public static double getTotalSBP_amount(PaymentRegistry paymentRegistry){
+        double totalSBP_amount = 0.0;
+        ArrayList<Payment> currentPaymentRegistry = paymentRegistry.getPaymentArrayList();
+
+        for (Payment payment : currentPaymentRegistry) {
+            totalSBP_amount += payment.getSBP_amount();
+        }
+        return totalSBP_amount;
+    }
+
+    public static double getTotalOrganization_BPA_notice(PaymentRegistry paymentRegistry){
+        double totalOrganization_BPA_notice = 0.0;
+        ArrayList<Payment> currentPaymentRegistry = paymentRegistry.getPaymentArrayList();
+
+        for (Payment payment : currentPaymentRegistry) {
+            totalOrganization_BPA_notice += payment.getOrganization_BPA_notice();
+        }
+        return totalOrganization_BPA_notice;
+    }
+
+    public static double getTotalOrganization_PNKO_notice(PaymentRegistry paymentRegistry){
+        double totalOrganization_PNKO_notice = 0.0;
+        ArrayList<Payment> currentPaymentRegistry = paymentRegistry.getPaymentArrayList();
+
+        for (Payment payment : currentPaymentRegistry) {
+            totalOrganization_PNKO_notice += payment.getOrganization_PNKO_notice();
+        }
+        return totalOrganization_PNKO_notice;
+    }
+
+
     public static double getPaymentAmount(PaymentRegistry paymentRegistry, String paymentType){
         double localPaymentAmount = 0.0;
         ArrayList<Payment> currentPaymentRegistry = paymentRegistry.getPaymentArrayList();
