@@ -35,7 +35,7 @@ public class GenerateController {
     public String generate(){
         return "generationSettings/frame";
     }
-    @PostMapping("/handleButtonClick")
+    @PostMapping("/generateReport")
     public String handleButtonClick(@RequestParam("chartType") String chartType,
                                     @RequestParam("radio") String radio,
                                     @RequestParam("file") MultipartFile file, Model model) throws IOException {
