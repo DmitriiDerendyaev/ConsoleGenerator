@@ -34,7 +34,7 @@ public class AuthorizationController {
             session.setAttribute("variablePatronymic", person.getPatronymic());
             session.setAttribute("variableEmail", person.getEmail());
             session.setAttribute("variablePhoneNumber", person.getPhone());
-            return "mainPage/frame";
+            return "redirect:/mainPage";
         } else {
             // Неправильные учетные данные, перенаправление на страницу ошибки
             return "authorization/frame";

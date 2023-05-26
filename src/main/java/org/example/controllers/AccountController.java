@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AccountController {
     @GetMapping("/account")
-    public String account(){
+    public String account(Model model, HttpServletRequest request){
+        HttpSession session = request.getSession();
+        model.addAttribute("variableSurname", session.getAttribute("variableSurname"));
         return "personalAccount/frame";
     }
 

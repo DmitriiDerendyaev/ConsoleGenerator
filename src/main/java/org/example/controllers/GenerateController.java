@@ -1,5 +1,7 @@
 package org.example.controllers;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.example.models.Payment;
 import org.example.models.PaymentParameter;
 import org.example.models.PaymentRegistry;
@@ -32,13 +34,20 @@ public class GenerateController {
     }
 
     @GetMapping("/generate")
-    public String generate(){
+    public String generate(Model model, HttpServletRequest request){
+        HttpSession session = request.getSession();
+        model.addAttribute("variableSurname", session.getAttribute("variableSurname"));
         return "generationSettings/frame";
     }
     @PostMapping("/generateReport")
     public String handleButtonClick(@RequestParam("chartType") String chartType,
                                     @RequestParam("radio") String radio,
-                                    @RequestParam("file") MultipartFile file, Model model) throws IOException {
+                                    @RequestParam("file") MultipartFile file,
+                                    Model model,
+                                    HttpServletRequest request) throws IOException {
+
+        HttpSession session = request.getSession();
+        model.addAttribute("variableSurname", session.getAttribute("variableSurname"));
 
         PaymentRegistry paymentRegistry = new PaymentRegistry();
         ParserData parserData = new ParserData();
@@ -49,8 +58,6 @@ public class GenerateController {
 //            System.out.println("checkID: " + payment.getCheckId());
 //            paymentService.addPayment(payment);
 //        }
-
-
 
         switch (radio){
             case "Сумма платежа":

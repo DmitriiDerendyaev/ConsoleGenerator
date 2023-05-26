@@ -48,16 +48,14 @@
             </span>
           </div>
 
-          <form action="#" th:action="@{/account}" th:method="GET">
             <button class="frame-file-selectinput1 button-hover button-active">
               <img
                       src="/personalAccount/public/playground_assets/ellipse121588-obwl-200h.png"
                       alt="Ellipse121588"
                       class="frame-ellipse12"
               />
-              <span class="frame-text04"><span>Дерендяев Д.С.</span></span>
+              <span class="frame-text04" th:text="${variableSurname}" ></span>
             </button>
-          </form>
 
           <div class="frame-frame30">
             <form action="#" th:action="@{/mainPage}" th:method="GET">

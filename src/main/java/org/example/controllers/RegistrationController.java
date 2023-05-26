@@ -66,6 +66,6 @@ public class RegistrationController {
         personService.savePerson(new Person(name, patronymic, phone,email,surname,
                 (String) session.getAttribute("login"), (String) session.getAttribute("password")));
 
-        return "mainPage/frame";
+        return "redirect:/authorization";
     }
 }
