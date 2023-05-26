@@ -2,11 +2,11 @@ package org.example.controllers;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-import org.example.models.Payment;
-import org.example.models.PaymentParameter;
-import org.example.models.PaymentRegistry;
-import org.example.models.PaymentType;
+import org.example.models.*;
+import org.example.services.InteractionHistoryService;
 import org.example.services.PaymentService;
+import org.example.services.PersonService;
+import org.example.services.ReportService;
 import org.example.utils.ChartGenerator;
 import org.example.utils.ParserData;
 import org.example.utils.PrepareData;
@@ -22,15 +22,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 
 
 @Controller
 public class GenerateController {
     private final PaymentService paymentService;
+    private final ReportService reportService;
+    private final InteractionHistoryService interactionHistoryService;
+    private final PersonService personService;
 
-    public GenerateController(PaymentService paymentService) {
+    public GenerateController(PaymentService paymentService,
+                              ReportService reportService,
+                              InteractionHistoryService interactionHistoryService,
+                              PersonService personService) {
         this.paymentService = paymentService;
+        this.reportService = reportService;
+        this.interactionHistoryService = interactionHistoryService;
+        this.personService = personService;
     }
 
     @GetMapping("/generate")
@@ -143,6 +153,33 @@ public class GenerateController {
 
         System.out.println("Chart Type: " + chartType);
         System.out.println("Selected Radio: " + radio);
+
+        Report report = new Report();
+        report.setName(chartType);
+        report.setGenerationTime(LocalDateTime.now());
+        report.setGeneratedByPersonId((Long) session.getAttribute("userId"));
+        report.setDiagramType(radio);
+        report.setSumPayment(PrepareData.getTotalPaymentAmount(paymentRegistry));
+        report.setSumBPA(PrepareData.getTotalBPA_notice(paymentRegistry));
+        report.setSumPNKO(PrepareData.getTotalPNKO_notice(paymentRegistry));
+        report.setSumCash(PrepareData.getTotalCashAmount(paymentRegistry));
+        report.setSumCard(PrepareData.getTotalCardAmount(paymentRegistry));
+        report.setSumSBP(PrepareData.getTotalSBP_amount(paymentRegistry));
+        report.setSumOrgBPA(PrepareData.getTotalOrganization_BPA_notice(paymentRegistry));
+        report.setSumOrgPNKO(PrepareData.getTotalOrganization_PNKO_notice(paymentRegistry));
+        report.setTimeRangeStart(paymentRegistry.getStartDate().atStartOfDay());
+        report.setTimeRangeEnd(paymentRegistry.getEndDate().atStartOfDay());
+
+        Report savedReport = reportService.addReport(report, report.getGeneratedByPersonId());
+
+        // Создание и сохранение истории работы с отчетом
+        InteractionHistory interactionHistory = new InteractionHistory();
+        interactionHistory.setReport(savedReport);
+        interactionHistory.setPerson(personService.findByLogin((String) session.getAttribute("login")));
+        interactionHistory.setInteractionTime(LocalDateTime.now());
+        interactionHistory.setActionType(ActionType.CREATE);
+
+        interactionHistoryService.addInteractionHistory(interactionHistory, report.getId(), (Long) session.getAttribute("userId"));
 
         return "generationSettings/frame";
     }

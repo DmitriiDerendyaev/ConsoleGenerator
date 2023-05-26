@@ -34,6 +34,13 @@ public class AuthorizationController {
             session.setAttribute("variablePatronymic", person.getPatronymic());
             session.setAttribute("variableEmail", person.getEmail());
             session.setAttribute("variablePhoneNumber", person.getPhone());
+
+            session.setAttribute("login", login);
+
+            Person foundPerson = personService.findByLogin(login);
+
+            session.setAttribute("userId", (Long)person.getId());
+
             return "redirect:/mainPage";
         } else {
             // Неправильные учетные данные, перенаправление на страницу ошибки
