@@ -1,25 +1,28 @@
 package org.example.controllers;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class AccountController {
-    @GetMapping("/account2")
+    @GetMapping("/account")
     public String account(){
         return "personalAccount/frame";
     }
 
-    @GetMapping("/account")
-    public String example(Model model) {
+    @GetMapping("/accountFilled")
+    public String example(Model model, HttpServletRequest request) {
         // Заполняем переменные модели значениями
-        model.addAttribute("variableName", "Вася");
-        model.addAttribute("variableSurname", "Иванов");
-        model.addAttribute("variableRole", "Младший сотрудник");
-        model.addAttribute("variablePatronymic", "Александрович");
-        model.addAttribute("variableEmail", "dds_stalker@mail.ru");
-        model.addAttribute("variablePhoneNumber", "+798888888888");
+        HttpSession session = request.getSession();
+        model.addAttribute("variableName", session.getAttribute("variableName"));
+        model.addAttribute("variableSurname", session.getAttribute("variableSurname"));
+        model.addAttribute("variableRole", session.getAttribute("variableRole"));
+        model.addAttribute("variablePatronymic", session.getAttribute("variablePatronymic"));
+        model.addAttribute("variableEmail", session.getAttribute("variableEmail"));
+        model.addAttribute("variablePhoneNumber", session.getAttribute("variablePhoneNumber"));
 
         // Возвращаем имя шаблона Thymeleaf
         return "personalAccount/frame";
