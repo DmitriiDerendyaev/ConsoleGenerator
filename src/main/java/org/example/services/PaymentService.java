@@ -6,6 +6,8 @@ import org.example.repository.PaymentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 @Service
 public class PaymentService {
@@ -29,5 +31,25 @@ public class PaymentService {
 
     public List<Payment> findPaymentsByPurposeAndType(String paymentPurpose, PaymentType paymentType) {
         return paymentRepository.findByPaymentPurposeAndPaymentType(paymentPurpose, paymentType);
+    }
+
+    public List<Payment> findAll() {
+        return paymentRepository.findAll();
+    }
+
+    public List<Payment> getRandomPayments(int count) {
+        List<Payment> allPayments = paymentRepository.findAll();
+        int totalPayments = allPayments.size();
+
+        if (totalPayments <= count) {
+            return allPayments;
+        } else {
+            Random random = new Random();
+            return random.ints(0, totalPayments)
+                    .distinct()
+                    .limit(count)
+                    .mapToObj(allPayments::get)
+                    .collect(Collectors.toList());
+        }
     }
 }
