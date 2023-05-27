@@ -62,7 +62,7 @@
                 />
                 <span class="frame-text"><span>Поиск</span></span>
               </button>
-              <input class="frame-input" type="text" name="searchQuery" placeholder="Введите поисковой запрос" />
+              <input class="frame-input" type="text" name="searchQuery" placeholder="services, state_duty, fines" />
             </form>
           </div>
 
@@ -73,7 +73,7 @@
                       alt="Ellipse121577"
                       class="frame-ellipse12"
               />
-              <span class="frame-text02"><span>Дерендяев Д.С.</span></span>
+              <span class="frame-text02" th:text="${variableSurname}" ></span>
             </button>
           </form>
 
@@ -100,7 +100,7 @@
                 <span class="frame-text06"><span>Просмотр отчета</span></span>
               </button>
             </form>
-            <form action="#" th:action="@{/404}" th:method="GET">
+            <form action="https://www.el-plat.ru/" th:method="GET">
               <button class="frame-f-qbutton button-active button-hover">
                 <span class="frame-text08"><span>Справка</span></span>
               </button>
@@ -108,11 +108,49 @@
           </div>
 
           <div class="frame-frame28">
-            <span class="frame-text10">
-              <span>Представление реестра, таблица</span>
-            </span>
-            <span class="frame-text12"><span>Сумма: 1000 руб.</span></span>
-            <span class="frame-text14"><span>Сумма: 1000 руб.</span></span>
+<!--        <span class="frame-text10">-->
+<!--            <span>Представление реестра, таблица</span>-->
+<!--        </span>-->
+            <table>
+              <thead>
+              <tr>
+                <th>Назначение</th>
+                <th>Тип</th>
+                <th>Оператор</th>
+                <th>Check ID</th>
+                <th>APM</th>
+                <th>Дата платежа</th>
+                <th>Сумма платежа</th>
+                <th>BPA</th>
+                <th>PNKO</th>
+                <th>Наличные</th>
+                <th>Карта</th>
+                <th>SBP</th>
+                <th>Организация BPA</th>
+                <th>Организация PNKO</th>
+                <th>Завершен</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr th:each="payment : ${payments}">
+                <td th:text="${payment.paymentPurpose}"></td>
+                <td th:text="${payment.paymentType}"></td>
+                <td th:text="${payment.operator}"></td>
+                <td th:text="${payment.checkId}"></td>
+                <td th:text="${payment.APM}"></td>
+                <td th:text="${payment.paymentTime}"></td>
+                <td th:text="${payment.paymentAmount}"></td>
+                <td th:text="${payment.BPA_notice}"></td>
+                <td th:text="${payment.PNKO_notice}"></td>
+                <td th:text="${payment.cashAmount}"></td>
+                <td th:text="${payment.cardAmount}"></td>
+                <td th:text="${payment.SBP_amount}"></td>
+                <td th:text="${payment.organization_BPA_notice}"></td>
+                <td th:text="${payment.organization_PNKO_notice}"></td>
+                <td th:text="${payment.isComplete}"></td>
+              </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

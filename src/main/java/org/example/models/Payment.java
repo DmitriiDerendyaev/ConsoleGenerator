@@ -1,15 +1,25 @@
 package org.example.models;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "payments")
 public class Payment {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int checkId;
+
     private int APM;
     private LocalDateTime paymentTime;
     private String operator;
     private String paymentPurpose;
+
+    @Enumerated(EnumType.STRING)
     private PaymentType paymentType;
+
     private double paymentAmount;
     private double BPA_notice;
     private double PNKO_notice;
@@ -19,6 +29,10 @@ public class Payment {
     private double organization_BPA_notice;
     private double organization_PNKO_notice;
     private boolean isComplete;
+
+    public Payment() {
+    }
+
 
     public Payment(int checkId, int APM, LocalDateTime paymentTime, String operator, String paymentPurpose, PaymentType paymentType, double paymentAmount, double BPA_notice, double PNKO_notice, double cashAmount, double cardAmount, double SBP_amount, double organization_BPA_notice, double organization_PNKO_notice, boolean isComplete) {
         this.checkId = checkId;

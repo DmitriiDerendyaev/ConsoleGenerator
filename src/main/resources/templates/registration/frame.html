@@ -32,50 +32,37 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
       data-tag="font"
     />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="registration/style.css" />
   </head>
   <body>
     <div>
-      <link href="./frame.css" rel="stylesheet" />
+      <link href="registration/frame.css" rel="stylesheet" />
 
       <div class="frame-container">
         <div class="frame-frame">
+          <form action="/primaryRegistration" method="post" th:action="@{/primaryRegistration}">
           <div class="frame-frame1">
-            <span class="frame-text"><span>Forgot password?</span></span>
-            <span class="frame-text02"><span>Sign UP</span></span>
-            <img
-              src="public/playground_assets/line151497-h0d6.svg"
-              alt="Line151497"
-              class="frame-line15"
-            />
-            <span class="frame-text04 greetingsTitle">
-              <span>Регистрация</span>
-            </span>
+            <a href="/404" class="frame-text"><span>More information</span></a>
+            <a href="/authorization" class="frame-text02"><span>SIGN IN</span></a>
+            <img src="/registration/public/playground_assets/line151497-h0d6.svg" alt="Line151497" class="frame-line15" />
+            <span class="frame-text04 greetingsTitle"><span>Регистрация</span></span>
+
             <div class="frame-frame32input">
-              <img
-                src="public/playground_assets/rectangle2input1497-fxt-200h.png"
-                alt="Rectangle2input1497"
-                class="frame-rectangle2input"
-              />
-              <span class="frame-text06"><span>PASSWORD</span></span>
+              <input type="password" class="frame-input-full" name="password" placeholder="Введите пароль" />
             </div>
             <div class="frame-frame33input">
-              <img
-                src="public/playground_assets/rectangle1input1497-cwgr-200h.png"
-                alt="Rectangle1input1497"
-                class="frame-rectangle1input"
-              />
-              <span class="frame-text08"><span>LOGIN</span></span>
+              <input type="text" class="frame-input-full" name="login"placeholder="Введите логин" />
             </div>
-            <button class="frame-frame34button">
-              <img
-                src="public/playground_assets/rectangle3button1497-p3o-200h.png"
-                alt="Rectangle3button1497"
-                class="frame-rectangle3button"
-              />
+
+            <button class="frame-frame34button button-active button-hover" type="submit">
+              <img src="/registration/public/playground_assets/rectangle3button1497-p3o-200h.png" alt="Rectangle3button1497"
+                   class="frame-rectangle3button" />
               <span class="frame-text10"><span>SIGN UP</span></span>
             </button>
+
           </div>
+          </form>
+
         </div>
       </div>
     </div>

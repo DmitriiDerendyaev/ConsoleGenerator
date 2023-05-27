@@ -1,55 +1,70 @@
 package org.example.models;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 
+
+@Entity
+@Table(name = "interaction_history")
 public class InteractionHistory {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long reportId;
-    private Long personId;
+
+    @OneToOne
+    @JoinColumn(name = "report_id")
+    private Report report;
+
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    private Person person;
+
     private LocalDateTime interactionTime;
+
+    @Enumerated(EnumType.STRING)
     private ActionType actionType;
 
     public InteractionHistory() {
-        // Пустой конструктор
     }
 
-    public InteractionHistory(Long reportId, Long personId, LocalDateTime interactionTime, ActionType actionType) {
-        this.reportId = reportId;
-        this.personId = personId;
-        this.interactionTime = interactionTime;
-        this.actionType = actionType;
-    }
+    // Добавьте геттеры и сеттеры для всех полей
 
     public Long getId() {
         return id;
     }
 
-    public Long getReportId() {
-        return reportId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Long getPersonId() {
-        return personId;
+    public Report getReport() {
+        return report;
+    }
+
+    public void setReport(Report report) {
+        this.report = report;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
     public LocalDateTime getInteractionTime() {
         return interactionTime;
     }
 
-    public ActionType getActionType() {
-        return actionType;
-    }
-
-    public void setReportId(Long reportId) {
-        this.reportId = reportId;
-    }
-
-    public void setPersonId(Long personId) {
-        this.personId = personId;
-    }
-
     public void setInteractionTime(LocalDateTime interactionTime) {
         this.interactionTime = interactionTime;
+    }
+
+    public ActionType getActionType() {
+        return actionType;
     }
 
     public void setActionType(ActionType actionType) {

@@ -47,18 +47,12 @@
                       alt="Ellipse121491"
                       class="frame-ellipse12 button-hover"
               />
-              <span class="frame-text04"><span>Дерендяев Д.С.</span></span>
+              <span class="frame-text04" th:text="${variableSurname}" ></span>
             </button>
           </form>
           <div class="frame-file-selectinput">
-            <form action="#" th:action="@{/handleButtonClick}" th:method="POST" enctype="multipart/form-data">
+            <form action="#" th:action="@{/generateReport}" th:method="POST" enctype="multipart/form-data">
               <input type="file" name="file" id="file" onchange="handleFileSelect(this)" />
-<!--              <button type="submit" class="frame-browsebutton button-active button-hover">-->
-<!--                <img src="/generationSetting/public/playground_assets/rectangle21499-wr3-200h.png" alt="Rectangle21499"-->
-<!--                     class="frame-rectangle2" />-->
-<!--                <span class="frame-text02"><span>PARSE</span></span>-->
-<!--              </button>-->
-
 
           </div>
           <div class="frame-create-generation-paramentrs">
@@ -177,7 +171,7 @@
               <span class="frame-text28"><span>Просмотр реестра</span></span>
             </button>
             </form>
-            <form action="#" th:action="@{/404}" th:method="GET">
+            <form action="https://www.el-plat.ru/" th:method="GET">
             <button class="frame-f-qbutton button-active button-hover">
               <span class="frame-text30"><span>Справка</span></span>
             </button>
