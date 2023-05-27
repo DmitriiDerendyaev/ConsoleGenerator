@@ -82,15 +82,44 @@
           <div class="frame-frame28">
             <span class="frame-text10"><span>Отчетности, список</span></span>
             <div class="frame-frame22">
-              <span class="frame-text12"><span>Название</span></span>
-              <span class="frame-text14"><span>Сумма: 1000 руб.</span></span>
-              <span class="frame-text16"><span>Сумма: 1000 руб.</span></span>
-              <span class="frame-text18"><span>Сумма: 1000 руб.</span></span>
-              <span class="frame-text20"><span>Сумма: 1000 руб.</span></span>
-              <span class="frame-text22"><span>Сумма: 1000 руб.</span></span>
-              <span class="frame-text24"><span>Сумма: 1000 руб.</span></span>
-              <span class="frame-text26"><span>Сумма: 1000 руб.</span></span>
-              <span class="frame-text28"><span>Сумма: 1000 руб.</span></span>
+              <table>
+                <thead>
+                <tr>
+                  <th>Название</th>
+                  <th>Создано</th>
+                  <th>Автор</th>
+                  <th>Тип диаграммы</th>
+                  <th>Сумма платежей</th>
+                  <th>Сумма BPA</th>
+                  <th>Сумма PNKO</th>
+                  <th>Сумма наличных</th>
+                  <th>Сумма по карте</th>
+                  <th>Сумма SBP</th>
+                  <th>Сумма организации BPA</th>
+                  <th>Сумма организации PNKO</th>
+                  <th>Начало периода</th>
+                  <th>Конец периода</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="report : ${reports}">
+                  <td th:text="${report.name}"></td>
+                  <td th:text="${report.generationTime}"></td>
+                  <td th:text="${report.generatedByPersonId}"></td>
+                  <td th:text="${report.diagramType}"></td>
+                  <td th:text="${report.sumPayment}"></td>
+                  <td th:text="${report.sumBPA}"></td>
+                  <td th:text="${report.sumPNKO}"></td>
+                  <td th:text="${report.sumCash}"></td>
+                  <td th:text="${report.sumCard}"></td>
+                  <td th:text="${report.sumSBP}"></td>
+                  <td th:text="${report.sumOrgBPA}"></td>
+                  <td th:text="${report.sumOrgPNKO}"></td>
+                  <td th:text="${report.timeRangeStart}"></td>
+                  <td th:text="${report.timeRangeEnd}"></td>
+                </tr>
+                </tbody>
+              </table>
             </div>
           </div>
           <div class="frame-frame281">
