@@ -14,4 +14,7 @@ public interface PaymentRepository extends JpaRepository<Payment, Integer> {
     List<Payment> findByPaymentPurpose(String paymentPurpose);
 
     List<Payment> findByPaymentPurposeAndPaymentType(String paymentPurpose, PaymentType paymentType);
+
+//    List<Payment> findByPaymentType(PaymentType paymentType);
+    List<Payment> findFirst100ByPaymentType(PaymentType paymentType);
 }

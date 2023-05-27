@@ -3,6 +3,7 @@ package org.example.controllers;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.example.models.Payment;
+import org.example.models.PaymentType;
 import org.example.repository.PaymentRepository;
 import org.example.services.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,9 @@ public class ViewRegistryController {
         // Здесь можно выполнить логику поиска, обработки запроса и т.д.
         // Пример:
         System.out.println("Получен поисковой запрос: " + searchQuery);
+
+        List<Payment> parameterPayments = paymentService.getPaymentsByType(PaymentType.valueOf(searchQuery));
+        model.addAttribute("payments", parameterPayments); // Передача списка платежей в модель
 
         // Возвращаем имя шаблона HTML или перенаправление на другую страницу
         return "viewRegistry/frame";

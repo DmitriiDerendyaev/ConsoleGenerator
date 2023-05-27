@@ -52,4 +52,9 @@ public class PaymentService {
                     .collect(Collectors.toList());
         }
     }
+
+    public List<Payment> getPaymentsByType(PaymentType paymentType) {
+//        return paymentRepository.findByPaymentType(paymentType);
+        return paymentRepository.findFirst100ByPaymentType(paymentType);
+    }
 }
